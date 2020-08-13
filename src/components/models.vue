@@ -52,7 +52,8 @@
   >
     <v-img
       height="100"
-      src="../assets/logo.svg"
+      
+      src="../assets/3651012b.png"
     ></v-img>
 
     <v-card-title>The journey</v-card-title>
@@ -156,6 +157,6 @@
 <style scoped>
 .con{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;  
+  grid-template-columns: 33% 33% 33%;  
 }
 </style>
