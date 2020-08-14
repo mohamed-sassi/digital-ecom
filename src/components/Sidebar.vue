@@ -1,97 +1,95 @@
 
 <template>
-<div class="c">
-  <div class="filter">
-    <v-switch v-model="disabled" class="ma-2" label="3D"></v-switch>
-    <v-switch v-model="absolute" class="ma-2" label="2D"></v-switch>
-    <v-switch v-model="openOnHover" class="ma-2" label="Characters & creatures"></v-switch>
-    <v-switch v-model="closeOnClick" label="Furniture & Home"></v-switch>
-    <v-switch v-model="closeOnContentClick" label="Cars & Vehicles"></v-switch>
-    <v-switch v-model="offsetX" label="Plants & Nature"></v-switch>
-    <v-switch v-model="offsetY" label="Y offset"></v-switch>
-    <v-switch v-model="value" class="ma-2" label="Value"></v-switch>
-  </div>
-    <v-card flat color="transparent">
-      <v-subheader>Price</v-subheader>
+  <v-card max-width="500" class="mx-auto">
+    <v-toolbar color="teal" dark>
+      <v-toolbar-title>Catregories</v-toolbar-title>
+    </v-toolbar>
 
-      <v-card-text>
-        <v-row>
-          <v-col class="px-4">
-            <v-range-slider v-model="range" :max="max" :min="min" hide-details class="align-center">
-              <template v-slot:prepend>
-                <v-text-field
-                  :value="range[0]"
-                  class="mt-0 pt-0"
-                  hide-details
-                  single-line
-                  type="number"
-                  style="width: 60px"
-                  @change="$set(range, 0, $event)"
-                ></v-text-field>
-              </template>
-              <template v-slot:append>
-                <v-text-field
-                  :value="range[1]"
-                  class="mt-0 pt-0"
-                  hide-details
-                  single-line
-                  type="number"
-                  style="width: 60px"
-                  @change="$set(range, 1, $event)"
-                ></v-text-field>
-              </template>
-            </v-range-slider>
-          </v-col>
-        </v-row>
-      </v-card-text>
-    </v-card>
+    <v-treeview selectable selected-color= "red"  :items="items"></v-treeview>
+    <v-divider :inset="inset"></v-divider>
 
-    <v-menu
-      v-model="value"
-      :disabled="disabled"
-      :absolute="absolute"
-      :open-on-hover="openOnHover"
-      :close-on-click="closeOnClick"
-      :close-on-content-click="closeOnContentClick"
-      :offset-x="offsetX"
-      :offset-y="offsetY"
-    ></v-menu>
-  </div>
+  </v-card>
 </template>
+
+
 <script>
 export default {
-  name: "Sidebar",
-  
   data: () => ({
+    
+
+
+    items: [
+      {
+        id: 1,
+        name: "2D",
+        children: [
+          { id: 2, name: "GUI" },
+          { id: 3, name: "Characters" },
+          { id: 4, name: "Props" },
+          { id: 5, name: "Environment" },
+        ],
+      },
+      {
+        id: 6,
+        name: "3D:",
+        children: [
+          {
+            id: 7,
+            name: "Characters",
+            children: [
+              { id: 8, name: "Animals" },
+              { id: 9, name: "Humanoids" },
+            ],
+          },
+          {
+            id: 10,
+            name: "Envionments",
+            children: [
+              { id: 12, name: "" },
+              { id: 13, name: "" },
+              { id: 14, name: "" },
+            ],
+          },
+          {
+            id: 10,
+            name: "Props",
+            children: [
+              { id: 12, name: "Furinture" },
+              { id: 13, name: "Guns" },
+              { id: 14, name: "Clothing" },
+            ],
+          },
+          {
+            id: 10,
+            name: "Vehicals",
+            children: [
+              { id: 12, name: "Air" },
+              { id: 13, name: "Sea" },
+              { id: 14, name: "Land" },
+            ],
+          },
+          { id: 12, name: "Animations" },
+        ],
+      },
+      {
+        id: 15,
+        name: "Audio",
+        children: [
+          {
+            id: 20,
+            name: "Soun Fx",
+            children: [
+              { id: 21, name: "Weapons" },
+              { id: 22, name: "Voices" },
+              { id: 23, name: "Animals" },
+            ],
+          },
+          { id: 24, name: "Music" },
+        ],
+      },
       
-    disabled: false,
-    absolute: false,
-    openOnHover: false,
-    value: false,
-    closeOnClick: true,
-    closeOnContentClick: true,
-    offsetX: false,
-    offsetY: true,
-    min: 0,
-    max: 100,
-    slider: 40,
-    range: [1, 100],
-      
+    ],
   }),
 };
 </script>
-
-<style scoped>
-.filter {
- 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-/*.c{
-  background-color: whitesmoke;
-  width: 30%;
-   
-  
-}*/
-</style>
 

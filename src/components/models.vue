@@ -1,23 +1,28 @@
 <template>
 <div class="con">
-  <v-card
-    :loading="loading"
-    class="mx-auto my-12"
-    max-width="250"
+ <v-card
+    max-width="100%"
+    class="mx-auto"
   >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
     <v-img
-      height="100"
       src="../assets/3651012b.png"
+      height="194"
     ></v-img>
 
-    <v-card-title>The journey</v-card-title>
-
     <v-card-text>
-      <v-row
-        align="center"
-        class="mx-0"
-      >
-        <v-rating
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
           :value="4.5"
           color="amber"
           dense
@@ -27,43 +32,43 @@
         ></v-rating>
 
         <div class="grey--text ml-4">4.5 (413)</div>
-      </v-row>
-      <div class="my-4 subtitle-1">
-        #3D,#Nature
-      </div>
-   
-    </v-card-text>
-
-    <v-divider class="mx-4"></v-divider>
-    <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-        @click="add"
-      >
-        Add to cart
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-  <v-card
-    :loading="loading"
-    class="mx-auto my-12"
-    max-width="250"
-  >
-    <v-img
-      height="100"
       
-      src="../assets/3651012b.png"
+      <v-spacer></v-spacer>
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+  
+  
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      height="194"
     ></v-img>
 
-    <v-card-title>The journey</v-card-title>
-
     <v-card-text>
-      <v-row
-        align="center"
-        class="mx-0"
-      >
-        <v-rating
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
           :value="4.5"
           color="amber"
           dense
@@ -73,42 +78,176 @@
         ></v-rating>
 
         <div class="grey--text ml-4">4.5 (413)</div>
-      </v-row>
-      <div class="my-4 subtitle-1">
-        #3D,#Nature
-      </div>
-   
+      
+      <v-spacer></v-spacer>
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="../assets/3651012b.png"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
     </v-card-text>
 
-    <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+      <v-spacer></v-spacer>
+     <v-btn
         text
-        @click="add"
+        color="deep-purple accent-4"
       >
-        Add to cart
+        Add 
       </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
     </v-card-actions>
   </v-card>
   <v-card
-    :loading="loading"
-    class="mx-auto my-12"
-    max-width="250"
+    max-width="100%"
+    class="mx-auto"
   >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
     <v-img
-      height="100"
       src="../assets/3651012b.png"
+      height="194"
     ></v-img>
 
-    <v-card-title>The journey</v-card-title>
-
     <v-card-text>
-      <v-row
-        align="center"
-        class="mx-0"
-      >
-        <v-rating
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
           :value="4.5"
           color="amber"
           dense
@@ -118,22 +257,286 @@
         ></v-rating>
 
         <div class="grey--text ml-4">4.5 (413)</div>
-      </v-row>
-      <div class="my-4 subtitle-1">
-        #3D,#Nature
-      </div>
-   
+      
+      <v-spacer></v-spacer>
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
     </v-card-text>
 
-    <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+     <v-btn
         text
-        @click="add"
+        color="deep-purple accent-4"
       >
-        Add to cart
+        Add 
       </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="../assets/3651012b.png"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+      <v-spacer></v-spacer>
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="../assets/3651012b.png"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+      <v-spacer></v-spacer>
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+  
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="../assets/3651012b.png"
+      height="194"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+      <v-spacer></v-spacer>
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
+    </v-card-actions>
+  </v-card>
+
+
+  <v-card
+    max-width="100%"
+    class="mx-auto"
+    max-height="100%"
+  >
+    <v-list-item>
+      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="headline"> Planet</v-list-item-title>
+        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      height="194"
+      class="img"
+    ></v-img>
+
+    <v-card-text>
+      3D,Nature...
+    </v-card-text>
+
+    <v-card-actions>
+      <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ml-4">4.5 (413)</div>
+      
+     <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        Add 
+      </v-btn>
+        
+      
     </v-card-actions>
   </v-card>
 </div>
@@ -157,6 +560,12 @@
 <style scoped>
 .con{
   display: grid;
-  grid-template-columns: 33% 33% 33%;  
+  grid-template-columns: 24% 24% 24% 24% ;  
+  grid-gap: 1em;
+  background-color:#e5efef;
+  
+
 }
+
+
 </style>

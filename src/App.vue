@@ -2,11 +2,11 @@
   <div id="app">
     <Navbar />
     <Head />
-    <div>
-      <div style="width: 20%; float:left">
+    <div class="ord">
+      <div style=" float:left">
       <Sidebar />
       </div>
-      <div style="width: 80%; float:right">
+      <div style="float:right">
       <models/>
       </div>
     </div>
@@ -38,5 +38,11 @@ export default {
   padding: 0;
   margin: 0;
   
+}
+.ord{
+  display: grid;
+  grid-template-columns: 20% 79%;
+  grid-column-gap: 1em;
+   
 }
 </style>
