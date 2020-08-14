@@ -33,10 +33,4 @@ export default {
   margin: 0;
   
 }
-.ord{
-  display: grid;
-  grid-template-columns: 20% 79%;
-  grid-column-gap: 1em;
-   
-}
 </style>
