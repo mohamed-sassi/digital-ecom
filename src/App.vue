@@ -1,30 +1,27 @@
 <template>
-  <div id="app">
+  <v-app>
     <Navbar />
-    <div class="ord">
-      <div style=" float:left">
-      <Sidebar />
-      </div>
-      <div style="float:right">
-      <models/>
-      </div>
-    </div>
-
-    <router-view />
-  </div>
+      <v-row>
+        <v-col cols="3">
+          <Sidebar/>
+        </v-col>
+        <v-col cols="9">
+          <router-view />
+        </v-col>
+      </v-row>
+  </v-app>
 </template>
 
 
 <script>
 import Navbar from "@/components/Navbar.vue";
 import Sidebar from "@/components/Sidebar.vue";
-import models from "@/components/models.vue";
+
 
 export default {
   components: {
     Navbar,
-    Sidebar,
-    models
+    Sidebar
   },
 };
 </script>

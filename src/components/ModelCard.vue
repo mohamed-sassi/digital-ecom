@@ -13,7 +13,7 @@
 
     <v-img
       src="../assets/3651012b.png"
-      height="194"
+      height="160"
     ></v-img>
 
     <v-card-text>

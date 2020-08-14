@@ -1,23 +1,16 @@
-
 <template>
-  <v-card max-width="500" class="mx-auto">
-    <v-toolbar color="teal" dark>
+  <v-card max-width="500" class="mx-auto" >
+    <v-toolbar color="teal" dark class="pl-5">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
-
-    <v-treeview selectable selected-color= "red"  :items="items"></v-treeview>
+    <v-treeview selectable selected-color= "red" class="pl-5"  :items="items"></v-treeview>
     <v-divider :inset="inset"></v-divider>
-
   </v-card>
 </template>
-
 
 <script>
 export default {
   data: () => ({
-    
-
-
     items: [
       {
         id: 1,
