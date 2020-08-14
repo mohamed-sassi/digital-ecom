@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Navbar />
-    <Head />
     <div class="ord">
       <div style=" float:left">
       <Sidebar />
@@ -18,14 +17,12 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import Head from "@/components/Head.vue";
 import Sidebar from "@/components/Sidebar.vue";
 import models from "@/components/models.vue";
 
 export default {
   components: {
     Navbar,
-    Head,
     Sidebar,
     models
   },
