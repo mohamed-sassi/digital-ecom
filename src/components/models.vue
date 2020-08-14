@@ -51,7 +51,7 @@
   display: grid;
   grid-template-columns: 24% 24% 24% 24% ;  
   grid-gap: 1em;
-  background-color:#e5efef;
+  
 }
 
 

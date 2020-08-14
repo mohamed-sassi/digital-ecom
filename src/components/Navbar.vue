@@ -1,7 +1,7 @@
 <template>
   <div>
    <v-app-bar
-      color="info"
+      color="#fe5000"
       dense
       dark
     >

@@ -1,9 +1,9 @@
 <template>
   <v-card max-width="500" class="mx-auto" >
-    <v-toolbar color="teal" dark class="pl-5">
+    <v-toolbar color="#fe5000" dark class="pl-5">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
-    <v-treeview selectable selected-color= "red" class="pl-5"  :items="items"></v-treeview>
+    <v-treeview selectable selected-color= "#f47721" class="pl-5"  :items="items"></v-treeview>
     <v-divider :inset="inset"></v-divider>
   </v-card>
 </template>
@@ -38,46 +38,46 @@ export default {
             id: 10,
             name: "Envionments",
             children: [
+              { id: 11, name: "" },
               { id: 12, name: "" },
               { id: 13, name: "" },
-              { id: 14, name: "" },
             ],
           },
           {
-            id: 10,
+            id: 14,
             name: "Props",
             children: [
-              { id: 12, name: "Furinture" },
-              { id: 13, name: "Guns" },
-              { id: 14, name: "Clothing" },
+              { id: 15, name: "Furinture" },
+              { id: 16, name: "Guns" },
+              { id: 17, name: "Clothing" },
             ],
           },
           {
-            id: 10,
+            id: 18,
             name: "Vehicals",
             children: [
-              { id: 12, name: "Air" },
-              { id: 13, name: "Sea" },
-              { id: 14, name: "Land" },
+              { id: 19, name: "Air" },
+              { id: 20, name: "Sea" },
+              { id: 21, name: "Land" },
             ],
           },
-          { id: 12, name: "Animations" },
+          { id: 22, name: "Animations" },
         ],
       },
       {
-        id: 15,
+        id: 23,
         name: "Audio",
         children: [
           {
-            id: 20,
+            id: 25,
             name: "Soun Fx",
             children: [
-              { id: 21, name: "Weapons" },
-              { id: 22, name: "Voices" },
-              { id: 23, name: "Animals" },
+              { id: 26, name: "Weapons" },
+              { id: 27, name: "Voices" },
+              { id: 28, name: "Animals" },
             ],
           },
-          { id: 24, name: "Music" },
+          { id: 29, name: "Music" },
         ],
       },
       
