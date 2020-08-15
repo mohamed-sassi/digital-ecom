@@ -1,6 +1,7 @@
 <template>
   <v-app id="app">
     <Navbar />
+    <Head/>
     <v-main>
       <v-row>
         <v-col cols="3">
@@ -18,11 +19,13 @@
 <script>
 import Navbar from "@/components/Navbar/Navbar.vue";
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
+import Head from "@/components/HomePage/Head.vue"
 
 export default {
   components: {
     Navbar,
     Sidebar,
+    Head,
   },
 };
 </script>
