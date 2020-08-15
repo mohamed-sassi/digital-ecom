@@ -12,23 +12,23 @@ export default {
       slides: [
         {
           title: "Slide 1",
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+          src: "https://www.cryengine.com/files/carousel/768/7567cc1f31fb8dba52fb46d9950070bf0f6129eb217326a66612fc11e4c6d474.webp",
         },
         {
           title: "Slide 2",
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+          src: "https://www.cryengine.com/files/carousel/768/c0dc875ae417c5a35dd2146f8b80fc34127da9ae0ee3daebfae74b92b973c319.webp",
         },
         {
           title: "Slide 3",
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+          src: "https://www.cryengine.com/files/carousel/768/aa3680fc2092710189a222d88870bb8288f9ea4c4aa66a9c9b3aa6de31ccc928.webp",
         },
         {
           title: "Slide 4",
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+          src: "https://www.cryengine.com/files/carousel/768/ce4245aa3b69cb155daac5eb33a957ec93428103a4a7b2891221ea8a1ce48a52.webp",
         },
         {
           title: "Slide 5",
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+          src: "https://www.cryengine.com/files/carousel/768/74e1312f3962709e04923155d5e6470204479e6eaabae0ef5e37fd4a70a9d03e.webp",
         },
       ],
     };
