@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <Head/>
+    <Head />
     <v-divider color="white"></v-divider>
     <div class="pt-5">
       <h1>Trending Assets</h1>
-      <Assets/>
+      <Assets />
     </div>
   </div>
 </template>
@@ -13,13 +13,12 @@
 import Assets from "@/components/Assets/Assets.vue";
 import Head from "@/components/HomePage/Head.vue";
 export default {
-  components:{
+  components: {
     Assets,
-    Head
+    Head,
   },
-  name: 'Home',
-}
+  name: "Home",
+};
 </script>
 <style scoped>
-
 </style>

@@ -2,15 +2,14 @@
   <v-app id="app">
     <Navbar />
     <v-main>
-      <v-row >
+      <v-row>
         <v-col cols="3">
-          <Sidebar/>
+          <Sidebar />
         </v-col>
         <v-col cols="9">
           <router-view />
         </v-col>
       </v-row>
-
     </v-main>
   </v-app>
 </template>
@@ -20,11 +19,10 @@
 import Navbar from "@/components/Navbar/Navbar.vue";
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
 
-
 export default {
   components: {
     Navbar,
-    Sidebar
+    Sidebar,
   },
 };
 </script>
@@ -36,8 +34,8 @@ export default {
   margin: 0;
 }
 
-#app{
+#app {
   background-color: #0e0f14;
-  color:white;
+  color: white;
 }
 </style>

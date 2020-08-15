@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar dense dark >
-    <img src="../../assets/logo.svg" height="120" class="pt-1">
+  <v-app-bar dense dark>
+    <img src="../../assets/logo.svg" height="120" class="pt-1" />
     <NavLink v-for="(navLink,index) in navLinks" :key="index" :link="navLink" />
     <v-text-field
       class="mt-5"
@@ -29,7 +29,7 @@
         <v-list>
           <v-list-item v-for="(link, i) in accountLinks" :key="i" link :to="link.route">
             <v-list-item-icon>
-              <v-icon >{{link.icon}}</v-icon>
+              <v-icon>{{link.icon}}</v-icon>
             </v-list-item-icon>
             <v-list-item-title>{{link.title}}</v-list-item-title>
           </v-list-item>
@@ -67,12 +67,12 @@ export default {
       {
         title: "Profie",
         route: "/profile",
-        icon: "mdi-account"
+        icon: "mdi-account",
       },
       {
         title: "Sign out",
         route: "#",
-        icon: "mdi-logout"
+        icon: "mdi-logout",
       },
     ],
   }),
