@@ -3,7 +3,7 @@
     <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
-    <v-treeview selectable dark selected-color="white" class="pl-5 sidebar" :items="items"></v-treeview>
+    <v-treeview selectable dark selected-color="orange" class="pl-5 sidebar" :items="items"></v-treeview>
   </v-card>
 </template>
 
@@ -86,6 +86,6 @@ export default {
 <style scoped>
 .sidebar {
   background-color: #0e0f14;
-  border-right: 1px solid white;
+  border-right: 1px solid grey;
 }
 </style>

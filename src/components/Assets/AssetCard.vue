@@ -1,6 +1,6 @@
 <template>
-  <v-card class="mx-auto" link to="/qsdqsd">
-    <v-img src="../../assets/3651012b.png" height="160"></v-img>
+  <v-card dark class="mx-auto" link to="/qsdqsd">
+    <v-img src="../../assets/exp.jpg" height="160"></v-img>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline d-flex justify-space-between">
@@ -26,6 +26,6 @@ export default {
 
 <style scoped>
 .price {
-  color: #012d5f;
+  color:#46ACC2;
 }
 </style>

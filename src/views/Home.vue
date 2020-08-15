@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Head />
-    <v-divider color="white"></v-divider>
+    <v-divider color="grey"></v-divider>
     <div class="pt-5">
       <h1>Trending Assets</h1>
       <Assets />
