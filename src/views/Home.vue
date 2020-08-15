@@ -1,21 +1,24 @@
 <template>
   <div class="home">
-    <Head/>
-    <models/>
+    <Head />
+    <v-divider color="white"></v-divider>
+    <div class="pt-5">
+      <h1>Trending Assets</h1>
+      <Assets />
+    </div>
   </div>
 </template>
 
 <script>
-import Models from "@/components/models.vue";
-import Head from "@/components/Head.vue";
+import Assets from "@/components/Assets/Assets.vue";
+import Head from "@/components/HomePage/Head.vue";
 export default {
-  components:{
-    Models,
-    Head
+  components: {
+    Assets,
+    Head,
   },
-  name: 'Home',
-}
+  name: "Home",
+};
 </script>
 <style scoped>
-
 </style>

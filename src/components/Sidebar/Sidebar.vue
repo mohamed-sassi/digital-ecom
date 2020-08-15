@@ -1,10 +1,9 @@
 <template>
-  <v-card max-width="500" class="mx-auto" >
-    <v-toolbar color="#fe5000" dark class="pl-5">
+  <v-card max-width="500" class="mx-auto">
+    <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
-    <v-treeview selectable selected-color= "#f47721" class="pl-5"  :items="items"></v-treeview>
-    <v-divider :inset="inset"></v-divider>
+    <v-treeview selectable dark selected-color="white" class="pl-5 sidebar" :items="items"></v-treeview>
   </v-card>
 </template>
 
@@ -24,7 +23,7 @@ export default {
       },
       {
         id: 6,
-        name: "3D:",
+        name: "3D",
         children: [
           {
             id: 7,
@@ -36,11 +35,11 @@ export default {
           },
           {
             id: 10,
-            name: "Envionments",
+            name: "Environments",
             children: [
-              { id: 11, name: "" },
-              { id: 12, name: "" },
-              { id: 13, name: "" },
+              { id: 11, name: "trees" },
+              { id: 12, name: "lands" },
+              { id: 13, name: "houses" },
             ],
           },
           {
@@ -54,7 +53,7 @@ export default {
           },
           {
             id: 18,
-            name: "Vehicals",
+            name: "Vehicles",
             children: [
               { id: 19, name: "Air" },
               { id: 20, name: "Sea" },
@@ -70,7 +69,7 @@ export default {
         children: [
           {
             id: 25,
-            name: "Soun Fx",
+            name: "Sound Fx",
             children: [
               { id: 26, name: "Weapons" },
               { id: 27, name: "Voices" },
@@ -80,9 +79,13 @@ export default {
           { id: 29, name: "Music" },
         ],
       },
-      
     ],
   }),
 };
 </script>
-
+<style scoped>
+.sidebar {
+  background-color: #0e0f14;
+  border-right: 1px solid white;
+}
+</style>

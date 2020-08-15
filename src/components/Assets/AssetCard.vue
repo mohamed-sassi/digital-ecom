@@ -1,0 +1,31 @@
+<template>
+  <v-card class="mx-auto" link to="/qsdqsd">
+    <v-img src="../../assets/3651012b.png" height="160"></v-img>
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title class="headline d-flex justify-space-between">
+          {{model.title}}
+          <span class="price">20$</span>
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-card-actions>
+      <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
+      <div class="grey--text ml-4">4.5 (413)</div>
+    </v-card-actions>
+  </v-card>
+</template>
+
+<script>
+export default {
+  props: {
+    model: Object,
+  },
+};
+</script>
+
+<style scoped>
+.price {
+  color: #012d5f;
+}
+</style>
