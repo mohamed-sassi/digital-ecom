@@ -1,18 +1,21 @@
 <template>
 <div class="con">
-  <ModelCard v-for="(asset,index) in models" :key="index" :model="asset"/>
+  <v-row>
+    <v-col cols=3 v-for="(asset,index) in models" :key="index" >
+      <AssetCard :model="asset"/>
+    </v-col>
+  </v-row>
 </div>
   
 </template>
 
 <script>
-  import ModelCard from './ModelCard'
+  import AssetCard from './AssetCard'
   export default {
     components : {
-      ModelCard
+      AssetCard
     },
     data: () => ({
-      loading: false,
       models:[
         {
           title:"asset 1"
@@ -37,22 +40,11 @@
         },
       ]
     }),
-
-    methods: {
-      Add () {
-        this.loading = true
-      },
-    },
   }
 </script>
 
 <style scoped>
-.con{
-  display: grid;
-  grid-template-columns: 24% 24% 24% 24% ;  
-  grid-gap: 1em;
-  
-}
+
 
 
 </style>

@@ -1,6 +1,7 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <Navbar />
+    <v-main>
       <v-row >
         <v-col cols="3">
           <Sidebar/>
@@ -9,13 +10,15 @@
           <router-view />
         </v-col>
       </v-row>
+
+    </v-main>
   </v-app>
 </template>
 
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-import Sidebar from "@/components/Sidebar.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
+import Sidebar from "@/components/Sidebar/Sidebar.vue";
 
 
 export default {
@@ -31,6 +34,10 @@ export default {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  
+}
+
+#app{
+  background-color: #0e0f14;
+  color:white;
 }
 </style>

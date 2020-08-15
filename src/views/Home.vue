@@ -1,16 +1,20 @@
 <template>
   <div class="home">
     <Head/>
-    <models/>
+    <v-divider color="white"></v-divider>
+    <div class="pt-5">
+      <h1>Trending Assets</h1>
+      <Assets/>
+    </div>
   </div>
 </template>
 
 <script>
-import Models from "@/components/models.vue";
-import Head from "@/components/Head.vue";
+import Assets from "@/components/Assets/Assets.vue";
+import Head from "@/components/HomePage/Head.vue";
 export default {
   components:{
-    Models,
+    Assets,
     Head
   },
   name: 'Home',
