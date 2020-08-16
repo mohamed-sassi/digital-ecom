@@ -1,7 +1,7 @@
 <template>
   <div class="con">
     <v-row>
-      <v-col cols="3" v-for="(asset,index) in models" :key="index">
+      <v-col cols="12" sm="6" md="3" v-for="(asset,index) in models" :key="index">
         <AssetCard :model="asset" />
       </v-col>
     </v-row>
@@ -27,15 +27,6 @@ export default {
       },
       {
         title: "asset 4",
-      },
-      {
-        title: "asset 5",
-      },
-      {
-        title: "asset 6",
-      },
-      {
-        title: "asset 7",
       },
     ],
   }),
