@@ -11,6 +11,7 @@
         </v-col>
       </v-row>
     </v-main>
+    <Footer/>
   </v-app>
 </template>
 
@@ -18,11 +19,13 @@
 <script>
 import Navbar from "@/components/Navbar/Navbar.vue";
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
+import Footer from "@/components/Footer/Footer.vue";
 
 export default {
   components: {
     Navbar,
     Sidebar,
+    Footer,
   },
 };
 </script>
