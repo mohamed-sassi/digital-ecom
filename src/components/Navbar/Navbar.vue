@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar dense dark>
+  <v-app-bar app dense dark>
     <img src="../../assets/logo.svg" height="120" class="pt-1" />
     <NavLink v-for="(navLink,index) in navLinks" :key="index" :link="navLink" />
     <v-text-field
