@@ -48,16 +48,16 @@ export default {
         type: "Recent assets",
         assets: [
           {
-            title: "asset 1",
+            title: "asset 5",
           },
           {
-            title: "asset 2",
+            title: "asset 6",
           },
           {
-            title: "asset 3",
+            title: "asset 7",
           },
           {
-            title: "asset 4",
+            title: "asset 8",
           },
         ],
       },
