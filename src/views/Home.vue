@@ -4,7 +4,7 @@
     <v-divider color="grey"></v-divider>
     <div class="pt-5" v-for="(category,index) in categories" :key="index">
       <h1>{{category.type}}</h1>
-      <Assets :assets="category.assets"/>
+      <Assets :assets="category.assets" />
       <v-divider color="grey"></v-divider>
     </div>
   </div>
