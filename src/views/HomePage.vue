@@ -1,22 +1,29 @@
 <template>
-  <div class="home">
-    <Slider />
-    <v-divider color="grey"></v-divider>
-    <div class="pt-5" v-for="(category,index) in categories" :key="index">
-      <h1>{{category.type}}</h1>
-      <Assets :assets="category.assets" />
+  <v-row>
+    <v-col cols="3">
+      <Sidebar/>
+    </v-col>
+    <v-col cols="9">
+      <Slider />
       <v-divider color="grey"></v-divider>
-    </div>
-  </div>
+      <div class="pt-5 pr-5" v-for="(category,index) in categories" :key="index">
+        <h1>{{category.type}}</h1>
+        <Assets :assets="category.assets" />
+        <v-divider color="grey"></v-divider>
+      </div>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 import Assets from "@/components/Assets/Assets.vue";
+import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import Slider from "@/components/HomePage/Slider";
 export default {
   components: {
     Assets,
     Slider,
+    Sidebar
   },
   data: () => ({
     categories: [

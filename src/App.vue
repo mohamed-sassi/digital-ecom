@@ -3,10 +3,7 @@
     <Navbar />
     <v-main>
       <v-row>
-        <v-col cols="3">
-          <Sidebar />
-        </v-col>
-        <v-col cols="9">
+        <v-col cols="12">
           <router-view />
         </v-col>
       </v-row>
@@ -18,12 +15,10 @@
 
 <script>
 import Navbar from "@/components/Navbar/Navbar.vue";
-import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import Footer from "@/components/Footer/Footer.vue";
 export default {
   components: {
     Navbar,
-    Sidebar,
     Footer
   },
 };
