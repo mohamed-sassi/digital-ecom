@@ -1,9 +1,43 @@
 <template>
-  <v-card max-width="500" class="mx-auto">
+  <v-card dark max-width="500" class="mx-auto sidebar">
     <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
-    <v-treeview selectable dark selected-color="orange" class="pl-5 sidebar" :items="items"></v-treeview>
+    <v-treeview openOnClick selectable dark selected-color="orange" class="pl-5" :items="items"></v-treeview>
+
+    <v-toolbar dark class="pl-5" rounded="0">
+      <v-toolbar-title>Filters</v-toolbar-title>
+    </v-toolbar>
+    <v-expansion-panels>
+    <v-expansion-panel
+    >
+      <v-expansion-panel-header>Price</v-expansion-panel-header>
+      <v-expansion-panel-content>
+         <v-radio-group v-model="radioGroup">
+      <v-radio
+        v-for="(Radio,i) in Radios"
+        :key="i"
+        :label="Radio.name"  
+        color="#46ACC2"
+      ></v-radio>
+    </v-radio-group>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+    <v-expansion-panel
+    >
+      <v-expansion-panel-header>Ratings</v-expansion-panel-header>
+      <v-expansion-panel-content>
+         <v-radio-group v-model="radioGroup">
+      <v-radio
+        v-for="(Rating,i) in Ratings"
+        :key="i"
+        :label="Rating.name" 
+        color="#46ACC2" 
+      ></v-radio>
+    </v-radio-group>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
   </v-card>
 </template>
 
@@ -80,12 +114,32 @@ export default {
         ],
       },
     ],
+    Ratings :[
+      {
+      id: 30, name: 'Unrated',
+      },
+      {id: 31,name: '1 star +'},
+      {id: 32,name: '2 star +'},
+      {id: 33,name: '3 star +'},
+      {id: 34,name: '4 star +'},
+      {id: 35,name: '5 stars'},
+    ],
+    Radios :[
+      {id:36, name:'Free'},
+      {id:37, name:'Up to 5 $'},
+      {id:38, name:'5 $ to 10 $'},
+      {id:40, name:'10 $ to 15 $'},
+      {id:41, name:'15 $ to 25 $'},
+      {id:42, name:'25 $ to 50 $'},
+      {id:43, name:'50 $ to 100 $'},
+      {id:44, name:'Over 100 $'},
+    ]
+    
   }),
 };
 </script>
 <style scoped>
 .sidebar {
-  background-color: #0e0f14;
   border-right: 1px solid grey;
 }
 </style>
