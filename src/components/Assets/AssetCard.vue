@@ -1,10 +1,10 @@
 <template>
-  <v-card dark class="mx-auto" link to="/qsdqsd">
+  <v-card dark link to="/qsdqsd">
     <v-img src="../../assets/exp.jpg" height="160"></v-img>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline d-flex justify-space-between">
-          {{model.title}}
+          {{asset.title}}
           <span class="price">20$</span>
         </v-list-item-title>
       </v-list-item-content>
@@ -19,7 +19,7 @@
 <script>
 export default {
   props: {
-    model: Object,
+    asset: Object,
   },
 };
 </script>

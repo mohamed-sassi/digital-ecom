@@ -1,12 +1,7 @@
 <template>
   <v-footer dark padless>
     <v-card flat tile class="lighten-1 white--text text-center" width="100%">
-      <v-card-text>
-        <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
-          <v-icon size="24px">{{ icon }}</v-icon>
-        </v-btn>
-      </v-card-text>
-      <v-row>
+      <v-row class="pt-8">
         <v-col v-for="i in [1,2,3]" :key="i" cols="12" sm="4" md="2">
           <v-list dark>
             <v-list-item v-for="j in [1,2,3,4,5]" :key="j">
@@ -23,6 +18,11 @@
           <v-text-field label="Email"></v-text-field>
           <v-textarea label="Message" rows="4" hint="Your feedback helps us"></v-textarea>
           <v-btn color="#46ACC2">Send</v-btn>
+        </v-col>
+        <v-col cols="12" sm="6" md="2" dir="1">
+          <v-btn v-for="icon in icons" :key="icon" class="my-6 white--text d-block" icon>
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
         </v-col>
       </v-row>
       <v-divider></v-divider>
