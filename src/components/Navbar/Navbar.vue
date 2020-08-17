@@ -1,6 +1,8 @@
 <template>
   <v-app-bar app dense dark hide-on-scroll>
-    <img src="../../assets/logo.svg" height="120" class="pt-1" />
+    <router-link to="/">
+      <img src="../../assets/Annotation_2020-08-17_185114-removebg-preview.png" height="60" class="pt-1" />
+    </router-link>
     <NavLink v-for="(navLink,index) in navLinks" :key="index" :link="navLink" />
     <v-text-field
       class="mt-5"
@@ -15,7 +17,7 @@
       <v-icon>mdi-basket-outline</v-icon>
     </v-btn>
     <div v-if="!loggedIn">
-      <v-btn @click="loggedIn = !loggedIn" color="orange" class="mx-2">Login</v-btn>
+      <v-btn color="orange" class="mx-2">Login</v-btn>
       <v-btn color="#46ACC2" class="mx-2">Sign Up</v-btn>
     </div>
     <div v-else>
