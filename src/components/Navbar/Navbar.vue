@@ -51,8 +51,8 @@ export default {
       {
         title: "Assets",
         subLinks: [
-          { title: "3D", route: "/assets/3D" },
-          { title: "2D", route: "/assets/2D" },
+          { title: "3D", route: "/3D" },
+          { title: "2D", route: "/2D" },
         ],
       },
       {
