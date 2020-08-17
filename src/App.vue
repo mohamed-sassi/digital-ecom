@@ -1,24 +1,38 @@
 <template>
-  <div id="app">
-    <Navbar/>
-    <router-view/>
-  </div>
+  <v-app id="app">
+    <Navbar />
+    <v-main>
+      <v-row>
+        <v-col cols="12">
+          <router-view />
+        </v-col>
+      </v-row>
+    </v-main>
+    <Footer/>
+  </v-app>
 </template>
 
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Navbar from "@/components/Navbar/Navbar.vue";
+import Footer from "@/components/Footer/Footer.vue";
 export default {
-  components:{
-    Navbar
-  }
-}
+  components: {
+    Navbar,
+    Footer
+  },
+};
 </script>
 
 <style>
-    *{
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-    }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  background-color: #0e0f14;
+  color: white;
+}
 </style>
