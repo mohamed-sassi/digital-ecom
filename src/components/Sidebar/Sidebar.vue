@@ -1,9 +1,9 @@
 <template>
-  <v-card dark max-width="500" class="mx-auto">
+  <v-card dark max-width="500" class="mx-auto sidebar">
     <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
-    <v-treeview openOnClick selectable dark selected-color="orange" class="pl-5 sidebar" :items="items"></v-treeview>
+    <v-treeview openOnClick selectable dark selected-color="orange" class="pl-5" :items="items"></v-treeview>
 
     <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Filters</v-toolbar-title>
