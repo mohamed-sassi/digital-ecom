@@ -1,12 +1,12 @@
 <template>
   <v-row>
-    <v-col cols="3">
+    <v-col cols="3" v-if="!onMobile">
       <Sidebar/>
     </v-col>
-    <v-col cols="9">
+    <v-col :cols="onMobile ? '12' : '9'">
       <Slider />
       <v-divider color="grey"></v-divider>
-      <div class="pt-5 pr-5" v-for="(category,index) in categories" :key="index">
+      <div class="pt-5 px-5" v-for="(category,index) in categories" :key="index">
         <h1>{{category.type}}</h1>
         <Assets :assets="category.assets" />
         <v-divider color="grey"></v-divider>
@@ -80,7 +80,11 @@ export default {
       },
     ],
   }),
-  name: "Home",
+  computed:{
+    onMobile(){
+      return this.$store.getters.onMobile;
+    }
+  }
 };
 </script>
 <style scoped>

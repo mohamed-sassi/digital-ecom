@@ -1,10 +1,10 @@
 <template>
   <div class="asset-container pa-2">
     <v-row>
-      <v-col cols="12" md="8">
+      <v-col cols="12" sm="7" lg="8">
         <Slider />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" sm="5" lg="4">
         <BuyAsset />
       </v-col>
     </v-row>
