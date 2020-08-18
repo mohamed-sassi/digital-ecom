@@ -92,8 +92,6 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  top: 100px;
-  bottom: 50px;
   width: 100%;
   padding: 0 10%;
 }
