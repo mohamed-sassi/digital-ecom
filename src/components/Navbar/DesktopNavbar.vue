@@ -9,11 +9,11 @@
     </router-link>
     <NavLink v-for="(navLink,index) in navLinks" :key="index" :link="navLink" />
     <v-text-field
-      class="mt-5"
+      class="search-bar mt-6"
       prepend-inner-icon="mdi-magnify"
-      rounded
-      height="30"
-      background-color="grey"
+      dense
+      outlined
+      background-color="#f0f8ff30"
       placeholder="Search..."
     ></v-text-field>
     <v-spacer></v-spacer>
@@ -59,5 +59,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  .search-bar{
+    border-radius: 10px;
+    
+  }
 </style>

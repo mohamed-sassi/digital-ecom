@@ -34,5 +34,6 @@ export default {
 #app {
   background-color: #0e0f14;
   color: white;
+  overflow: hidden;
 }
 </style>
