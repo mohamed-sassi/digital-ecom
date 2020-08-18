@@ -9,15 +9,15 @@
     </router-link>
     <NavLink v-for="(navLink,index) in navLinks" :key="index" :link="navLink" />
     <v-text-field
-      class="search-bar mt-6"
+      class="search-bar mt-6 mx-2"
       prepend-inner-icon="mdi-magnify"
       dense
-      outlined
+      solo
       background-color="#f0f8ff30"
       placeholder="Search..."
     ></v-text-field>
     <v-spacer></v-spacer>
-    <div v-if="!loggedIn">
+    <div v-if="!loggedIn" class="d-flex">
       <v-btn color="orange" class="mx-2" @click="loggedIn = true">Login</v-btn>
       <v-btn color="#46ACC2" class="mx-2">Sign Up</v-btn>
     </div>
@@ -62,6 +62,6 @@ export default {
 <style scoped>
   .search-bar{
     border-radius: 10px;
-    
+    max-width: 30%;
   }
 </style>

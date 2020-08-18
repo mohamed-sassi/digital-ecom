@@ -52,6 +52,7 @@
       class="search-bar mt-6 ml-2"
       prepend-inner-icon="mdi-magnify"
       dense
+      outlined
       background-color="#f0f8ff30"
       placeholder="Search..."
     ></v-text-field>
@@ -92,6 +93,7 @@ export default {
   display: flex;
   flex-direction: column;
   top: 100px;
+  bottom: 50px;
   width: 100%;
   padding: 0 10%;
 }
