@@ -49,12 +49,12 @@
         />
       </router-link>
       <v-text-field
-        prepend-inner-icon="mdi-magnify"
-        class="mt-5"
-        solo
-        background-color="grey"
-        placeholder="Search..."
-      ></v-text-field>
+      class="search-bar mt-6 ml-2"
+      prepend-inner-icon="mdi-magnify"
+      dense
+      background-color="#f0f8ff30"
+      placeholder="Search..."
+    ></v-text-field>
       <Sidebar />
       <div v-if="!loggedIn" class="loginButtons">
         <v-btn color="orange" class="my-2" @click="loggedIn = true">Login</v-btn>
@@ -88,11 +88,16 @@ export default {
 </script>
 <style>
 .loginButtons {
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
-  bottom: 10px;
+  top: 100px;
   width: 100%;
   padding: 0 10%;
+}
+
+.search-bar{
+  border-radius: 10px;
+  width: 95%;
 }
 </style>
