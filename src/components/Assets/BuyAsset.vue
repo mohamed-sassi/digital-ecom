@@ -1,20 +1,31 @@
 <template>
   <div class="buy-asset pa-10">
     <h2>Asset Title</h2>
-    <div class="avatar d-flex align-center">
-      <v-avatar>
-        <v-icon dark large>mdi-account-circle</v-icon>
-      </v-avatar>
-      <h3>AmilcarTek Studio</h3>
-      <v-rating class="ml-auto" half-increments small dense></v-rating>
-      <div class="grey--text ml-2">4.5 (413)</div>
-    </div>
-    <div class="d-flex justify-space-between align-center price-buy py-4">
-      <h1 class="price">129.99$</h1>
-      <v-btn x-large>
-        <v-icon dark>mdi-cart-outline</v-icon>Add To Cart
-      </v-btn>
-    </div>
+    <v-row>
+      <v-col cols="12" md="6">
+        <div class="author d-flex">
+          <v-avatar>
+            <v-icon dark large>mdi-account-circle</v-icon>
+          </v-avatar>
+          <h3>AmilcarTek Studio</h3>
+        </div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="rating d-flex">
+          <v-rating  half-increments small dense></v-rating>
+          <p class="grey--text ml-2">4.5(413)</p>
+        </div>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" sm="6"><h1>129.99$</h1></v-col>
+      <v-col cols="12" sm="6">
+        <v-btn block="">
+          <v-icon dark>mdi-cart-outline</v-icon>
+          Add To Cart
+        </v-btn>        
+      </v-col>
+    </v-row>
     <v-list dark class="px-5">
       <v-list-item
         v-for="j in [1,2,3,4,5]"
@@ -41,4 +52,5 @@ export default {};
     .buy-asset{
         border:1px solid rgba(255, 255, 255, 0.329);
     }
+
 </style>
