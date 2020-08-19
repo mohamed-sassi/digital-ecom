@@ -22,10 +22,8 @@
       <v-btn color="#46ACC2" class="mx-2">Sign Up</v-btn>
     </div>
     <div v-else>
-      <v-btn icon class="mx-1">
-        <v-icon>mdi-basket-outline</v-icon>
-      </v-btn>
-      <v-menu offset-y="true" rounded="0" transition="slide-y-transition" dark>
+      <Cart />
+      <v-menu offset-x offset-y rounded transition="slide-y-transition" dark>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
             <v-icon>mdi-account-outline</v-icon>
@@ -33,7 +31,13 @@
         </template>
 
         <v-list>
-          <v-list-item v-for="(link, i) in accountLinks" :key="i" link :to="link.route" @click="link.onClick ? (loggedIn = false) : null">
+          <v-list-item
+            v-for="(link, i) in accountLinks"
+            :key="i"
+            link
+            :to="link.route"
+            @click="link.onClick ? (loggedIn = false) : null"
+          >
             <v-list-item-icon>
               <v-icon>{{link.icon}}</v-icon>
             </v-list-item-icon>
@@ -47,9 +51,11 @@
 
 <script>
 import NavLink from "./NavLink";
+import Cart from './Cart'
 export default {
   components: {
     NavLink,
+    Cart
   },
   props: {
     navLinks: Array,
@@ -60,8 +66,9 @@ export default {
 </script>
 
 <style scoped>
-  .search-bar{
-    border-radius: 10px;
-    max-width: 30%;
-  }
+.search-bar {
+  border-radius: 10px;
+  max-width: 30%;
+}
+
 </style>
