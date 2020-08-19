@@ -11,9 +11,7 @@
           />
         </router-link>
         <div v-if="loggedIn">
-          <v-btn icon class="mx-1">
-            <v-icon>mdi-basket-outline</v-icon>
-          </v-btn>
+          <Cart/>
           <v-menu offset-y="true" rounded="0" transition="slide-y-transition" dark>
             <template v-slot:activator="{ on, attrs }">
               <v-btn icon v-bind="attrs" v-on="on">
@@ -68,9 +66,11 @@
 
 <script>
 import Sidebar from "../Sidebar/Sidebar";
+import Cart from './Cart'
 export default {
   components: {
     Sidebar,
+    Cart
   },
   props: {
     loggedIn: Boolean,
@@ -92,8 +92,6 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  top: 100px;
-  bottom: 50px;
   width: 100%;
   padding: 0 10%;
 }

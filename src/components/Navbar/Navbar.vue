@@ -49,7 +49,7 @@ export default {
         icon: "mdi-logout",
         onClick:'logout'
       },
-    ],
+    ]
   }),
   computed:{
     onMobile(){
