@@ -1,10 +1,10 @@
 <template>
   <div class="asset-container pa-2">
     <v-row>
-      <v-col cols="12" sm="7" lg="8">
-        <Slider />
+      <v-col cols="12" md="7" lg="8">
+        <Preview />
       </v-col>
-      <v-col cols="12" sm="5" lg="4">
+      <v-col cols="12" md="5" lg="4">
         <BuyAsset />
       </v-col>
     </v-row>
@@ -24,12 +24,14 @@
 </template>
 
 <script>
-import Slider from "@/components/HomePage/Slider";
+// import Slider from "@/components/HomePage/Slider";
 import BuyAsset from "@/components/Assets/BuyAsset";
+import Preview from '@/components/Assets/Preview'
 export default {
   components: {
-    Slider,
+    // Slider,
     BuyAsset,
+    Preview
   },
 };
 </script>
