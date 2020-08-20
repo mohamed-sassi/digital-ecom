@@ -25,7 +25,7 @@ export default {
   methods: {
     init() {
       let container = document.getElementById("container")
-      this.camera = new Three.PerspectiveCamera(70,container.clientWidth / container.clientHeight,0.01,500);
+      this.camera = new Three.PerspectiveCamera(70,container.clientWidth / container.clientHeight,0.001,500);
       this.camera.position.z = 3
       this.camera.position.y = 3
 
@@ -42,7 +42,7 @@ export default {
 
       this.renderer = new Three.WebGLRenderer({ antialias: true });
       this.renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(this.renderer.domElement);
+      
 
       this.controls = new OrbitControls(this.camera, container);
       var loader = new GLTFLoader();
@@ -50,6 +50,7 @@ export default {
         model.scene.children[0].rotateZ((45 / 180) * Math.PI);
         this.scene.add(model.scene);
         this.animate();
+        container.appendChild(this.renderer.domElement);
         this.loading = false
       },()=>{
         this.loading = true
@@ -68,7 +69,7 @@ export default {
 
 <style scoped>
 #container {
-  height: 600px;
+  height: 80vh;
   background-color: #dddddd;
 }
 </style>
