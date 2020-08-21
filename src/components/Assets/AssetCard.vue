@@ -22,6 +22,7 @@ export default {
     asset: Object,
   },
 };
+
 </script>
 
 <style scoped>

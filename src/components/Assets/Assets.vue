@@ -16,7 +16,9 @@ export default {
   },
   props:{
     assets:Array
-  }
+  },
+
+  
 };
 </script>
 
