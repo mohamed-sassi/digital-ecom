@@ -7,7 +7,7 @@
             <v-list-item v-for="j in [1,2,3,4,5]" :key="j">
               <v-list-item-content>
                 <v-list-item-title>
-                  <router-link to="qsd" class="link">Link</router-link>
+                  <router-link to="/qsd" class="link">Link</router-link>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
