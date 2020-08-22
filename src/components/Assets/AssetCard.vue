@@ -1,6 +1,14 @@
 <template>
   <v-card dark link to="/assets/qsd">
-    <v-img src="../../assets/exp.jpg" height="160"></v-img>
+    <div @mouseleave="stopPreview" class="preview">
+      <v-img src="../../assets/exp.jpg" @mouseover="preparePreview" height="160" v-if="!previewing"></v-img>
+      <MiniPreview v-else/>
+      <v-progress-linear
+      color="#46acc2"
+      indeterminate
+      v-if="loading"
+    ></v-progress-linear>
+    </div>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline d-flex justify-space-between">
@@ -17,15 +25,46 @@
 </template>
 
 <script>
+import MiniPreview from './MiniPreview'
 export default {
+  components: {
+    MiniPreview,
+  },
   props: {
     asset: Object,
+  },
+  data: () => ({
+    previewing: false,
+    loading:false,
+    timeout:null
+  }),
+
+  methods: {
+    preparePreview() {
+      this.timeout = setTimeout(this.startPreview,1000)
+      this.loading = true
+    },
+    startPreview(){
+      this.previewing = true
+      this.loading = false
+    },
+    stopPreview() {
+      clearTimeout(this.timeout)
+      this.previewing = false;
+      this.loading = false
+    },
   },
 };
 </script>
 
 <style scoped>
 .price {
-  color:#46ACC2;
+  color: #46acc2;
 }
+
+.preview {
+  height: 160px;
+}
+
+
 </style>
