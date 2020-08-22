@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <Loading v-if="loading" />
-        <div class="err d-flex justify-center align-center" v-if="error">
+    <div class="err d-flex justify-center align-center" v-if="error">
       <h1>Failed to load asset</h1>
     </div>
   </div>
@@ -23,8 +23,8 @@ export default {
     renderer: null,
     controls: null,
   }),
-  methods:{
-      init() {
+  methods: {
+    init() {
       let container = document.getElementById("container");
       this.camera = new Three.PerspectiveCamera(
         70,
@@ -32,7 +32,7 @@ export default {
         0.001,
         500
       );
-      this.camera.position.set(1,1,1)
+      this.camera.position.set(1, 1, 1);
       this.scene = new Three.Scene();
       this.scene.background = new Three.Color(0xdddddd);
 
@@ -48,9 +48,9 @@ export default {
       this.renderer.setSize(container.clientWidth, container.clientHeight);
 
       this.controls = new OrbitControls(this.camera, container);
-      this.controls.enabled = false
-      this.controls.autoRotate = true
-      this.controls.autoRotateSpeed = 15
+      this.controls.enabled = false;
+      this.controls.autoRotate = true;
+      this.controls.autoRotateSpeed = 15;
       var loader = new GLTFLoader();
       loader.load(
         "carModel/scene.gltf",
@@ -59,20 +59,21 @@ export default {
           this.scene.add(model.scene);
           container.appendChild(this.renderer.domElement);
           this.loading = false;
-          this.fitCameraToObject(model.scene,null)
+          this.fitCameraToObject(model.scene, null);
           this.animate();
         },
         () => {
           this.loading = true;
-        },()=>{
-          this.loading = false
-          this.error = true
+        },
+        () => {
+          this.loading = false;
+          this.error = true;
         }
       );
     },
     animate() {
       this.renderer.render(this.scene, this.camera);
-    this.controls.update()
+      this.controls.update();
       requestAnimationFrame(this.animate);
     },
 
@@ -85,8 +86,8 @@ export default {
 
       const center = boundingBox.getCenter(new Three.Vector3());
       const size = boundingBox.getSize(new Three.Vector3());
-      const scaleFactor = new Three.Vector3(1/size.y,1/size.y,1/size.y)
-      object.scale.set(scaleFactor.x,scaleFactor.y,scaleFactor.z)
+      const scaleFactor = new Three.Vector3(1 / size.y, 1 / size.y, 1 / size.y);
+      object.scale.set(scaleFactor.x, scaleFactor.y, scaleFactor.z);
       const startDistance = center.distanceTo(this.camera.position);
       const endDistance =
         this.camera.aspect > 1
@@ -99,9 +100,8 @@ export default {
         (this.camera.position.y * endDistance) / startDistance,
         (this.camera.position.z * endDistance) / startDistance
       );
-      this.camera.lookAt(center)
+      this.camera.lookAt(center);
     },
-
   },
   mounted() {
     this.init();
@@ -114,7 +114,7 @@ export default {
   height: 100%;
   background-color: #dddddd;
 }
-.err{
+.err {
   height: 100%;
   background-color: transparent;
   color: #3f3f3f;
