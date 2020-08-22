@@ -2,7 +2,7 @@
   <v-card dark link to="/assets/qsd">
     <div @mouseleave="stopPreview" class="preview">
       <v-img src="../../assets/exp.jpg" @mouseover="preparePreview" height="160" v-if="!previewing"></v-img>
-      <MiniPreview v-else/>
+      <Preview v-else :previewType="previewType"/>
       <v-progress-linear
       color="#46acc2"
       indeterminate
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import MiniPreview from './MiniPreview'
+import Preview from './Preview'
 export default {
   components: {
-    MiniPreview,
+    Preview,
   },
   props: {
     asset: Object,
@@ -36,7 +36,8 @@ export default {
   data: () => ({
     previewing: false,
     loading:false,
-    timeout:null
+    timeout:null,
+    previewType:"mini"
   }),
 
   methods: {

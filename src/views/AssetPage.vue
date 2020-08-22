@@ -2,7 +2,7 @@
   <div class="asset-container pa-2">
     <v-row>
       <v-col cols="12" md="7" lg="8">
-        <Preview />
+        <Preview :previewType="previewType"/>
       </v-col>
       <v-col cols="12" md="5" lg="4">
         <BuyAsset />
@@ -33,6 +33,9 @@ export default {
     BuyAsset,
     Preview
   },
+  data:()=>({
+    previewType:"large"
+  })
 };
 </script>
 
