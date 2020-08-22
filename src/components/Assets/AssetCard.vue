@@ -25,10 +25,9 @@
 </template>
 
 <script>
-import Preview from './Preview'
 export default {
   components: {
-    Preview,
+    Preview : () => import('./Preview')
   },
   props: {
     asset: Object,
