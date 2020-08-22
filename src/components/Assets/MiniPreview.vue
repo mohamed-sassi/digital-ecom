@@ -1,6 +1,9 @@
 <template>
   <div id="container">
     <Loading v-if="loading" />
+        <div class="err d-flex justify-center align-center" v-if="error">
+      <h1>Failed to load asset</h1>
+    </div>
   </div>
 </template>
 
@@ -110,5 +113,10 @@ export default {
 #container {
   height: 100%;
   background-color: #dddddd;
+}
+.err{
+  height: 100%;
+  background-color: transparent;
+  color: #3f3f3f;
 }
 </style>
