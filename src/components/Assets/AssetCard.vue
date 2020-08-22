@@ -1,6 +1,6 @@
 <template>
   <v-card dark link to="/assets/qsd">
-    <v-img src="../../assets/exp.jpg" height="160"></v-img>
+    <scene/>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline d-flex justify-space-between">
@@ -17,10 +17,14 @@
 </template>
 
 <script>
+import Scene from "./Scene";
 export default {
   props: {
     asset: Object,
   },
+  components:{
+    Scene,
+  }
 };
 
 </script>

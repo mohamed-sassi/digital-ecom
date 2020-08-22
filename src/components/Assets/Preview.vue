@@ -1,4 +1,5 @@
-<template>
+
++<template>
   <div id="container">
     <Loading v-if="loading" />
     <div class="err d-flex justify-center align-center" v-if="error">
@@ -55,7 +56,7 @@ export default {
       this.controls = new OrbitControls(this.camera, container);
       var loader = new GLTFLoader();
       loader.load(
-        "carModel/scene.gltf",
+        "",
         (model) => {
           model.scene.children[0].rotateZ((45 / 180) * Math.PI);
           this.scene.add(model.scene);

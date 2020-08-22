@@ -18,8 +18,7 @@
     ></v-text-field>
     <v-spacer></v-spacer>
     <div v-if="!loggedIn" class="d-flex">
-      <v-btn color="orange" class="mx-2" @click="loggedIn = true">Login</v-btn>
-      <v-btn color="#46ACC2" class="mx-2">Sign Up</v-btn>
+      <Register/>
     </div>
     <div v-else>
       <Cart />
@@ -51,16 +50,20 @@
 
 <script>
 import NavLink from "./NavLink";
-import Cart from './Cart'
+import Cart from './Cart';
+import Register from './Register';
 export default {
   components: {
     NavLink,
-    Cart
+    Cart,
+    Register
   },
   props: {
     navLinks: Array,
     accountLinks: Array,
     loggedIn: Boolean,
+    Sr: Boolean,
+    Lr: Boolean,
   },
 };
 </script>
