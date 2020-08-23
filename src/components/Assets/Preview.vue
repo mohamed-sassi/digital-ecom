@@ -1,6 +1,5 @@
-
-+<template>
-  <div id="container">
+<template>
+  <div id="container" :class="previewType">
     <Loading v-if="loading" />
     <div class="err d-flex justify-center align-center" v-if="error">
       <h1>Failed to load asset</h1>
@@ -13,21 +12,21 @@ import Loading from "./Loading";
 import * as Three from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Vector3 } from 'three';
 export default {
   components: {
     Loading,
   },
-  data() {
-    return {
-      error:null,
-      camera: null,
-      scene: null,
-      renderer: null,
-      controls: null,
-      loading: false,
-    };
+  props:{
+    previewType:String
   },
+  data:()=>({
+    error:null,
+    camera: null,
+    scene: null,
+    renderer: null,
+    controls: null,
+    loading: false,
+  }),
   methods: {
     init() {
       let container = document.getElementById("container");
@@ -38,7 +37,6 @@ export default {
         500
       );
       this.camera.position.set(1,1,1)
-      this.camera.useQuanternion = true
       this.scene = new Three.Scene();
       this.scene.background = new Three.Color(0xdddddd);
 
@@ -54,6 +52,11 @@ export default {
       this.renderer.setSize(container.clientWidth, container.clientHeight);
 
       this.controls = new OrbitControls(this.camera, container);
+      if(this.previewType == "mini"){
+        this.controls.enabled = false;
+        this.controls.autoRotate = true;
+        this.controls.autoRotateSpeed = 15;
+      }
       var loader = new GLTFLoader();
       loader.load(
         "",
@@ -67,14 +70,17 @@ export default {
         },
         () => {
           this.loading = true;
-        },()=>{
+        },(err)=>{
           this.loading = false
+          console.log(err)
           this.error = true
         }
       );
     },
     animate() {
       this.renderer.render(this.scene, this.camera);
+      if(this.previewType == "mini")
+        this.controls.update()
       requestAnimationFrame(this.animate);
     },
 
@@ -87,9 +93,8 @@ export default {
 
       const center = boundingBox.getCenter(new Three.Vector3());
       const size = boundingBox.getSize(new Three.Vector3());
-      const scaleFactor = new Vector3(1/size.y,1/size.y,1/size.y)
+      const scaleFactor = new Three.Vector3(1/size.y,1/size.y,1/size.y)
       object.scale.set(scaleFactor.x,scaleFactor.y,scaleFactor.z)
-      // console.log(new Three.Vector3(object.scale.x * size.x,size.y,object.scale.z * size.z))
       const startDistance = center.distanceTo(this.camera.position);
       const endDistance =
         this.camera.aspect > 1
@@ -103,7 +108,8 @@ export default {
         (this.camera.position.z * endDistance) / startDistance
       );
       this.camera.lookAt(center)
-      this.controls.update()
+      if(this.previewType == "large")
+        this.controls.update()
     },
 
   },
@@ -115,12 +121,18 @@ export default {
 
 <style scoped>
 #container {
-  height: 70vh;
   background-color: #dddddd;
+}
+.large{
+  height: 70vh;
+}
+.mini{
+  height: 100%;
 }
 .err{
   height: 100%;
   background-color: transparent;
   color: #3f3f3f;
+  font-size: 80%;
 }
 </style>
