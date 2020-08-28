@@ -10,7 +10,7 @@
             class="pt-1"
           />
         </router-link>
-        <div v-if="loggedIn">
+        <div v-if="this.$store.state.loggedIn">
           <Cart/>
           <v-menu offset-y="true" rounded="0" transition="slide-y-transition" dark>
             <template v-slot:activator="{ on, attrs }">
@@ -73,7 +73,7 @@ export default {
     Cart
   },
   props: {
-    loggedIn: Boolean,
+    
     accountLinks: Array,
   },
   data: () => ({
