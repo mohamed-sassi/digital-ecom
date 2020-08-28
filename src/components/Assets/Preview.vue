@@ -9,7 +9,7 @@
 
 <script>
 import Loading from "./Loading";
-import * as Three from "three";
+import * as Three from "three/build/three.module";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 export default {
   components: {
@@ -36,8 +36,10 @@ export default {
       this.addLights();
       this.loadControls();
       // this.loadFBX("the-lighthouse/source/Cotman_Sam.fbx")
-      this.loadGLTF("carModel/scene.gltf");
-      // this.loadOBJ("obj/wooden watch tower2.obj")
+      this.loadGLTF('https://threejsfundamentals.org/threejs/resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf');
+      // this.loadOBJ(
+      //   "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj"
+      // );
     },
 
     addCamera() {
@@ -47,7 +49,7 @@ export default {
         0.001,
         500
       );
-      
+
       this.camera.position.set(1, 1, 1);
     },
 
@@ -72,8 +74,12 @@ export default {
       directionalLight.position.set(0, 1, 0);
       directionalLight.castShadow = true;
       this.scene.add(directionalLight);
+      const skyColor = 0xb1e1ff; // light blue
+      const groundColor = 0xb97a20; // brownish orange
+      const intensity = 1;
+      const light = new Three.HemisphereLight(skyColor, groundColor, intensity);
+      this.scene.add(light);
     },
-
 
     loadControls() {
       this.controls = new OrbitControls(this.camera, this.container);
@@ -85,7 +91,9 @@ export default {
     },
 
     async loadGLTF(file) {
-      let { GLTFLoader } = await import("three/examples/jsm/loaders/GLTFLoader");
+      let { GLTFLoader } = await import(
+        "three/examples/jsm/loaders/GLTFLoader"
+      );
       let gltfLoader = new GLTFLoader();
       gltfLoader.load(
         file,
@@ -123,28 +131,47 @@ export default {
     },
 
     async loadOBJ(file) {
-      let { OBJLoader } = await import("three/examples/jsm/loaders/OBJLoader");
-      let { MTLLoader } = await import ("three/examples/jsm/loaders/MTLLoader")
-      let materialLoader = new MTLLoader()
-      materialLoader.load("obj/wooden watch tower2.mtl",(materials)=>{
-        materials.preload()
-        let objLoader = new OBJLoader();
-        objLoader.setMaterials(materials)
-        objLoader.load(
-          file,
-          (model) => {
-            this.addObjecToScene(model);
-          },
-          () => {
-            this.loading = true;
-          },
-          (err) => {
-            this.loading = false;
-            console.log(err);
-            this.error = true;
-          }
-        );
-      })
+      let { OBJLoader2 } = await import(
+        "three/examples/jsm/loaders/OBJLoader2"
+      );
+      let { MTLLoader } = await import("three/examples/jsm/loaders/MTLLoader");
+      let { MtlObjBridge } = await import(
+        "three/examples/jsm/loaders/obj2/bridge/MtlObjBridge"
+      );
+      let materialLoader = new MTLLoader();
+      materialLoader.load(
+        "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl",
+        (mats) => {
+          mats.preload()
+          let objLoader = new OBJLoader2();
+          let materials = MtlObjBridge.addMaterialsFromMtlLoader(mats);
+          objLoader.addMaterials(materials);
+          objLoader.load(
+            file,
+            (model) => {
+              this.addObjecToScene(model);
+            },
+            () => {
+              this.loading = true;
+            },
+            (err) => {
+              this.loading = false;
+              console.log(err);
+              this.error = true;
+            }
+          ,(mesh)=>{
+            console.log(mesh)
+          });
+        },
+        () => {
+          this.loading = true;
+        },
+        (err) => {
+          this.loading = false;
+          console.log(err);
+          this.error = true;
+        }
+      );
     },
 
     addObjecToScene(object) {
@@ -162,36 +189,33 @@ export default {
     },
 
     fitCameraToObject(object) {
-      let offset = 1.5;
+      const box = new Three.Box3().setFromObject(object);
 
-      const boundingBox = new Three.Box3();
+      const boxSize = box.getSize(new Three.Vector3()).length();
+      const boxCenter = box.getCenter(new Three.Vector3());
 
-      boundingBox.setFromObject(object);
+      this.controls.maxDistance = boxSize * 10;
+      this.controls.target.copy(boxCenter);
+      this.controls.update();
+      const halfSizeToFitOnScreen = boxSize * 1.2 * 0.5;
+      const halfFovY = Three.MathUtils.degToRad(this.camera.fov * 0.5);
+      const distance = halfSizeToFitOnScreen / Math.tan(halfFovY);
+      const direction = new Three.Vector3()
+        .subVectors(this.camera.position, boxCenter)
+        .multiply(new Three.Vector3(1, 0, 1))
+        .normalize();
 
-      const center = boundingBox.getCenter(new Three.Vector3());
-      const size = boundingBox.getSize(new Three.Vector3());
-      const scaleFactor = new Three.Vector3(
-        5.5 / (size.y + size.x + size.z),
-        5.5 / (size.y + size.x + size.z),
-        5.5 / (size.y + size.x + size.z)
+      this.camera.position.copy(
+        direction.multiplyScalar(distance).add(boxCenter)
       );
-      object.scale.set(scaleFactor.x, scaleFactor.y, scaleFactor.z);
-      const startDistance = center.distanceTo(this.camera.position);
-      const endDistance =
-        this.camera.aspect > 1
-          ? (size.y / 2 + offset) / Math.abs(Math.tan(this.camera.fov / 2))
-          : (size.y / 2 + offset) /
-            Math.abs(Math.tan(this.camera.fov / 2)) /
-            this.camera.aspect;
-      this.camera.position.set(
-        (this.camera.position.x * endDistance) / startDistance,
-        (this.camera.position.y * endDistance) / startDistance,
-        (this.camera.position.z * endDistance) / startDistance
-      );
-      this.camera.lookAt(center);
-      if (this.previewType == "large") this.controls.update();
+
+      this.camera.near = boxSize / 100;
+      this.camera.far = boxSize * 100;
+
+      this.camera.updateProjectionMatrix();
+
+      this.camera.lookAt(boxCenter.x, boxCenter.y, boxCenter.z);
     },
-
   },
 
   mounted() {
