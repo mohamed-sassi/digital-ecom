@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" width="57%">
+    <v-dialog v-model="dialog" width="40.5%">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="orange" class="mx-2" v-bind="attrs" v-on="on" @click="signUp = false">login</v-btn>
         <v-btn color="#46ACC2" class="mx-2" v-bind="attrs" v-on="on" @click="signUp = true">sign Up</v-btn>

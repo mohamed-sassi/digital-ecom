@@ -1,5 +1,5 @@
 <template>
-  <div id="container" :class="previewType">
+  <div :id="`${previewType}-container`" :class="previewType">
     <Loading v-if="loading" />
     <div class="err d-flex justify-center align-center" v-if="error">
       <h1>Failed to load asset</h1>
@@ -29,14 +29,16 @@ export default {
   }),
   methods: {
     init() {
-      this.container = document.getElementById("container");
+      this.container = document.getElementById(`${this.previewType}-container`);
       this.addCamera();
       this.addScene();
       this.addRenderer();
       this.addLights();
       this.loadControls();
       // this.loadFBX("the-lighthouse/source/Cotman_Sam.fbx")
-      this.loadGLTF('https://threejsfundamentals.org/threejs/resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf');
+      this.loadGLTF(
+        "carModel/scene.gltf"
+      );
       // this.loadOBJ(
       //   "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj"
       // );
@@ -47,7 +49,7 @@ export default {
         70,
         this.container.clientWidth / this.container.clientHeight,
         0.001,
-        500
+        1000
       );
 
       this.camera.position.set(1, 1, 1);
@@ -142,7 +144,7 @@ export default {
       materialLoader.load(
         "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl",
         (mats) => {
-          mats.preload()
+          mats.preload();
           let objLoader = new OBJLoader2();
           let materials = MtlObjBridge.addMaterialsFromMtlLoader(mats);
           objLoader.addMaterials(materials);
@@ -158,10 +160,11 @@ export default {
               this.loading = false;
               console.log(err);
               this.error = true;
+            },
+            (mesh) => {
+              console.log(mesh);
             }
-          ,(mesh)=>{
-            console.log(mesh)
-          });
+          );
         },
         () => {
           this.loading = true;
@@ -226,14 +229,14 @@ export default {
 
 
 <style scoped>
-#container {
-  background-color: #b4b4b4;
-}
+
 .large {
   height: 70vh;
+  background-color: #b4b4b4;
 }
 .mini {
   height: 100%;
+  background-color: #b4b4b4;
 }
 .err {
   height: 100%;

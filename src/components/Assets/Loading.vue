@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-center justify-center loader flex-column">
     <v-progress-circular indeterminate size="40"></v-progress-circular>
-    <h2>Loading model ...</h2>
+    <h3>Loading model ...</h3>
   </div>
 </template>
 

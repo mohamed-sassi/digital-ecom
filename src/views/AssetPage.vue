@@ -1,16 +1,16 @@
 <template>
-  <div class="asset-container pa-2">
+  <v-container class="asset-container pa-2">
     <v-row>
-      <v-col cols="12" md="7" lg="8">
+      <v-col cols="12" md="7" xl="8">
         <Preview :previewType="previewType"/>
       </v-col>
-      <v-col cols="12" md="5" lg="4">
+      <v-col cols="12" md="5" xl="4">
         <BuyAsset />
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12" md="8">
-        <div class="description px-16 pt-5">
+    <v-row class="pt-5">
+      <v-col cols="12" md="8" class="px-10">
+        <div class="description ">
           <h2>Description</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sagittis mi eu iaculis molestie. Morbi elit nisl, feugiat quis pretium eu, rutrum eu metus. Nullam mollis fringilla tincidunt. Morbi nibh tellus, porttitor in libero vel, rutrum placerat massa. Quisque aliquam velit et lectus pretium pulvinar. Quisque eget leo nec diam malesuada pulvinar et et tortor. Duis ac sagittis elit, et iaculis elit. Pellentesque velit est, ultricies id diam vel, pretium faucibus est. Fusce et dolor suscipit velit porttitor sollicitudin. Morbi non pharetra erat, eget laoreet leo. Proin suscipit semper blandit. In eleifend nec mi sed suscipit.
@@ -18,23 +18,31 @@
             Fusce eros ipsum, hendrerit id erat id, ornare efficitur nisl. Quisque ac euismod ligula. Phasellus finibus nisl purus, at maximus libero commodo eu. Vivamus auctor purus ut arcu imperdiet pretium. Donec semper congue erat, vitae viverra massa blandit id. Etiam at massa fringilla, ultricies magna non, ultricies nisi. Integer consectetur sagittis laoreet.
           </p>
         </div>
+        <div class="reviews">
+          <Reviews/>
+        </div>
+      </v-col>
+      <v-col cols="12" md="4">
+          <RelatedAssets />
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
-// import Slider from "@/components/HomePage/Slider";
+import RelatedAssets from '@/components/Assets/RelatedAssets'
 import BuyAsset from "@/components/Assets/BuyAsset";
 import Preview from '@/components/Assets/Preview'
+import Reviews from '@/components/Assets/Reviews'
 export default {
   components: {
-    // Slider,
+    RelatedAssets,
     BuyAsset,
-    Preview
+    Preview,
+    Reviews
   },
   data:()=>({
-    previewType:"large"
+    previewType:"large",
   })
 };
 </script>
