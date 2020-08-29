@@ -1,6 +1,6 @@
 <template>
-  <v-carousel cycle hide-delimiter-background show-arrows-on-hover class="mb-5">
-    <v-carousel-item v-for="(slide, i) in slides" :key="i" :src="slide.src" contain>
+  <v-carousel height="450px" cycle hide-delimiter-background show-arrows-on-hover class="mb-5">
+    <v-carousel-item v-for="(slide, i) in slides" :key="i" :src="slide.src" class="cr" contain >
       <!-- <div class="slide-title">{{slide.title}}</div> -->
     </v-carousel-item>
   </v-carousel>
@@ -43,5 +43,8 @@ export default {
   margin-top: 27%;
   margin-left: 10%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+.cr {
+  width:98%;
 }
 </style>
