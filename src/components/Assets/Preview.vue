@@ -59,7 +59,7 @@ export default {
       }
       var loader = new GLTFLoader();
       loader.load(
-        "",
+        "carModel/scene.gltf",
         (model) => {
           model.scene.children[0].rotateZ((45 / 180) * Math.PI);
           this.scene.add(model.scene);
