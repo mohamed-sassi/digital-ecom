@@ -19,7 +19,9 @@
           </v-btn>
         </v-list-item>
       </v-list>
-      <v-btn block color="orange">Checkout</v-btn>
+      <router-link to="/views/CheckoutPage">
+        <v-btn block color="orange">Checkout</v-btn>
+      </router-link>
     </div>
     <div v-else class="cart d-flex justify-center align-center flex-column">
       <v-icon color="#a5a5a5" x-large>mdi-cart</v-icon>

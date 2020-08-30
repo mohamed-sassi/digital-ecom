@@ -1,5 +1,5 @@
 <template>
-  <v-card dark max-width="500" class="mx-auto sidebar">
+  <v-card dark max-width="500" class="mx-auto sidebar" height="470px">
     <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>
@@ -134,8 +134,15 @@ export default {
             ],
           },
           { id: 29, name: "Music" },
+
         ],
       },
+      {
+        id: 30, name: "Tools",
+      },
+        {
+        id: 30, name: "Templates",
+      }
     ],
     rating : 0,
     min: 0,

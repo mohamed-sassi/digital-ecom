@@ -17,7 +17,7 @@
       placeholder="Search..."
     ></v-text-field>
     <v-spacer></v-spacer>
-    <div v-if="!loggedIn" class="d-flex">
+    <div v-if="!this.$store.state.loggedIn" class="d-flex">
       <Register/>
     </div>
     <div v-else>
@@ -35,7 +35,7 @@
             :key="i"
             link
             :to="link.route"
-            @click="link.onClick ? (loggedIn = false) : null"
+            @click="link.onClick ? (this.$store.state.loggedIn = false) : null"
           >
             <v-list-item-icon>
               <v-icon>{{link.icon}}</v-icon>
@@ -60,10 +60,7 @@ export default {
   },
   props: {
     navLinks: Array,
-    accountLinks: Array,
-    loggedIn: Boolean,
-    Sr: Boolean,
-    Lr: Boolean,
+    accountLinks: Array
   },
 };
 </script>

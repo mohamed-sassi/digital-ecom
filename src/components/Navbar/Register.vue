@@ -12,12 +12,12 @@
               <div class="overlay-left">
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
-                <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
+                <button class="invert" id="signIn" @click="signUp = !signUp"  >Sign In</button>
               </div>
               <div class="overlay-right">
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
-                <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
+                <button class="invert" id="signUp" @click="signUp = !signUp ">Sign Up</button>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <a href="#" >Forgot your password?</a>
-            <button>Sign In</button>
+            <button @click="this.$store.state.loggedIn= this.$store.state.loggedIn ">Sign In</button>
           </form>
         </div>
       </article>
