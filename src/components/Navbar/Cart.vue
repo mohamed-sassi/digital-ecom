@@ -19,8 +19,8 @@
           </v-btn>
         </v-list-item>
       </v-list>
-      <router-link to="/views/CheckoutPage">
-        <v-btn block color="orange">Checkout</v-btn>
+      <router-link to="/checkout" style="text-decoration:none;">
+        <v-btn block color="orange" >Checkout</v-btn>
       </router-link>
     </div>
     <div v-else class="cart d-flex justify-center align-center flex-column">
@@ -55,4 +55,6 @@ export default {
   background-color: rgb(48, 48, 48);
   color: #a5a5a5;
 }
+
+
 </style>

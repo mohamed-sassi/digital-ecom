@@ -1,7 +1,6 @@
 <template>
-  <v-carousel height="450px" cycle hide-delimiter-background show-arrows-on-hover class="mb-5">
+  <v-carousel height="450" cycle hide-delimiter-background show-arrows-on-hover class="mb-5">
     <v-carousel-item v-for="(slide, i) in slides" :key="i" :src="slide.src" class="cr" contain >
-      <!-- <div class="slide-title">{{slide.title}}</div> -->
     </v-carousel-item>
   </v-carousel>
 </template>

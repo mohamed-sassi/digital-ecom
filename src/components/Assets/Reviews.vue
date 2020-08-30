@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Reviews</h2>
     <v-list dark color="transparent">
       <div v-for="i in 2" :key="i">
         <v-list-item>
@@ -13,7 +12,7 @@
             <v-list-item-subtitle>29/09/2020</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
-        <div class="review-text px-16">
+        <div class="review-text px-lg-16">
           <h2>Title</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sagittis mi eu iaculis molestie. Morbi elit nisl, feugiat quis pretium eu, rutrum eu metus. Nullam mollis fringilla tincidunt. Morbi nibh tellus, porttitor in libero vel, rutrum placerat massa. Quisque aliquam velit et lectus pretium pulvinar. Quisque eget leo nec diam malesuada pulvinar et et tortor. Duis ac sagittis elit, et iaculis elit. Pellentesque velit est, ultricies id diam vel, pretium faucibus est. Fusce et dolor suscipit velit porttitor sollicitudin. Morbi non pharetra erat, eget laoreet leo. Proin suscipit semper blandit. In eleifend nec mi sed suscipit.

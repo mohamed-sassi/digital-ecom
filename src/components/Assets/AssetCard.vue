@@ -44,8 +44,10 @@ export default {
 
   methods: {
     preparePreview() {
-      this.timeout = setTimeout(this.startPreview,1000)
-      this.loading = true
+      if(this.asset.preview){
+        this.timeout = setTimeout(this.startPreview,1000)
+        this.loading = true
+      }
     },
     startPreview(){
       this.previewing = true

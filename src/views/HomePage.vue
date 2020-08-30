@@ -32,6 +32,7 @@ export default {
         assets: [
           {
             title: "asset 1",
+            preview:true
           },
           {
             title: "asset 2",
@@ -41,6 +42,7 @@ export default {
           },
           {
             title: "asset 4",
+            preview:true
           },
         ],
       },

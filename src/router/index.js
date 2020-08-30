@@ -17,7 +17,7 @@ Vue.use(VueRouter)
     component: AssetPage
   },
   {
-    path: '/views/CheckoutPage',
+    path: '/checkout',
     name: 'checkout',
     component: CheckoutPage
   }
