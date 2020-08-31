@@ -17,7 +17,7 @@
       placeholder="Search..."
     ></v-text-field>
     <v-spacer></v-spacer>
-    <div v-if="!this.$store.state.loggedIn" class="d-flex">
+    <div v-if="this.$store.state.loggedIn" class="d-flex">
       <Register/>
     </div>
     <div v-else>

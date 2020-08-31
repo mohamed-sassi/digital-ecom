@@ -13,11 +13,15 @@
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
                 <button class="invert" id="signIn" @click="signUp = !signUp"  >Sign In</button>
+                <p>Or</p>
+                <SocialSignUp/>
               </div>
               <div class="overlay-right">
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
                 <button class="invert" id="signUp" @click="signUp = !signUp ">Sign Up</button>
+                <p>Or</p>
+                <SocialSignUp/>
               </div>
             </div>
           </div>
@@ -27,7 +31,8 @@
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <button>Sign Up</button> 
+          
           </form>
           <form class="sign-in" action="#" >
             <h2>Sign In</h2>
@@ -44,13 +49,18 @@
 </template>
 
 <script>
+import SocialSignUp from './SocialSignUp'
 export default {
+  
   data: () => {
     return {
       signUp: false,
       dialog: false,
     };
   },
+  components:{
+    SocialSignUp,
+  }
 };
 </script>
 
