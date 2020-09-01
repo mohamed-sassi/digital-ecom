@@ -17,11 +17,12 @@
       placeholder="Search..."
     ></v-text-field>
     <v-spacer></v-spacer>
-    <div v-if="this.$store.state.loggedIn" class="d-flex">
+    <Cart />
+    <div v-if="!this.$store.state.loggedIn " class="d-flex">
       <Register/>
     </div>
     <div v-else>
-      <Cart />
+      
       <v-menu offset-x offset-y rounded transition="slide-y-transition" dark>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">

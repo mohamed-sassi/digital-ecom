@@ -2,7 +2,7 @@
   <v-menu offset-y :close-on-content-click="false">
     <template v-slot:activator="{ on, attrs }" >
       <v-btn icon class="mx-1" v-bind="attrs" v-on="on">
-        <v-badge :content="cart.length.toString()" color="orange" overlap>
+        <v-badge :content="cart.length.toString()" color="#46ACC2" overlap>
           <v-icon>mdi-basket-outline</v-icon>
         </v-badge>
       </v-btn>
@@ -20,7 +20,7 @@
         </v-list-item>
       </v-list>
       <router-link to="/checkout" style="text-decoration:none;">
-        <v-btn block color="orange" >Checkout</v-btn>
+        <v-btn block color="#46ACC2" >Checkout</v-btn>
       </router-link>
     </div>
     <div v-else class="cart d-flex justify-center align-center flex-column">

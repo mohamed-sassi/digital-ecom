@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" width="40.5%">
+    <v-dialog v-model="dialog" width="57%">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="orange" class="mx-2" v-bind="attrs" v-on="on" @click="signUp = false">login</v-btn>
         <v-btn color="#46ACC2" class="mx-2" v-bind="attrs" v-on="on" @click="signUp = true">sign Up</v-btn>
@@ -40,7 +40,7 @@
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <a href="#" >Forgot your password?</a>
-            <button @click="this.$store.state.loggedIn= this.$store.state.loggedIn ">Sign In</button>
+            <button @click="this.$store.state.loggedIn=true ">Sign In</button>
           </form>
         </div>
       </article>
