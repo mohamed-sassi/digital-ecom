@@ -55,7 +55,7 @@
       placeholder="Search..."
     ></v-text-field>
       <Sidebar />
-      <div v-if="!loggedIn" class="loginButtons">
+      <div v-if="!this.$store.state.loggedIn" class="loginButtons">
         <v-btn color="orange" class="my-2" @click="loggedIn = true">Login</v-btn>
         <v-btn color="#46ACC2" class="my-2">Sign Up</v-btn>
       </div>
@@ -73,7 +73,6 @@ export default {
     Cart
   },
   props: {
-    
     accountLinks: Array,
   },
   data: () => ({

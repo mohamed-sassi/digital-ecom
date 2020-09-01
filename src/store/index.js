@@ -6,8 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   
   state: {
-    loggedIn : Boolean ,
-    
+    loggedIn : true,
   },
   getters:{
     onMobile:() => screen.width < 960

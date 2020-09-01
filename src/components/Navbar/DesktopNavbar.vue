@@ -60,10 +60,7 @@ export default {
   },
   props: {
     navLinks: Array,
-    accountLinks: Array,
-    
-    Sr: Boolean,
-    Lr: Boolean,
+    accountLinks: Array
   },
 };
 </script>

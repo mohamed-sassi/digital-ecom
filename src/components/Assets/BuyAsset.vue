@@ -18,9 +18,11 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" sm="6"><h1>129.99$</h1></v-col>
-      <v-col cols="12" sm="6">
-        <v-btn block="">
+      <v-col cols="12" sm="6" class="px-0 px-xl-4 mt-n2">
+        <h1>129.99$</h1>
+      </v-col>
+      <v-col cols="12" sm="6" class="px-0 ml-xl-n3">
+        <v-btn block>
           <v-icon dark>mdi-cart-outline</v-icon>
           Add To Cart
         </v-btn>        
@@ -28,7 +30,7 @@
     </v-row>
     <v-list dark class="px-5">
       <v-list-item
-        v-for="j in [1,2,3,4,5]"
+        v-for="j in 5"
         :key="j"
         class="my-4"
         style="border-bottom: 1px solid rgba(255,255,255,.4)"

@@ -1,5 +1,5 @@
 <template>
-  <div id="container" :class="previewType">
+  <div :id="`${previewType}-container`" :class="previewType">
     <Loading v-if="loading" />
     <div class="err d-flex justify-center align-center" v-if="error">
       <h1>Failed to load asset</h1>
@@ -9,37 +9,66 @@
 
 <script>
 import Loading from "./Loading";
-import * as Three from "three";
+import * as Three from "three/build/three.module";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export default {
   components: {
     Loading,
   },
-  props:{
-    previewType:String
+  props: {
+    previewType: String,
   },
-  data:()=>({
-    error:null,
+  data: () => ({
+    error: null,
     camera: null,
     scene: null,
     renderer: null,
     controls: null,
     loading: false,
+    container: null,
   }),
   methods: {
     init() {
-      let container = document.getElementById("container");
+      this.container = document.getElementById(`${this.previewType}-container`);
+      this.addCamera();
+      this.addScene();
+      this.addRenderer();
+      this.addLights();
+      this.loadControls();
+      // this.loadFBX("the-lighthouse/source/Cotman_Sam.fbx")
+      this.loadGLTF(
+        "carModel/scene.gltf"
+      );
+      // this.loadOBJ(
+      //   "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj"
+      // );
+    },
+
+    addCamera() {
       this.camera = new Three.PerspectiveCamera(
         70,
-        container.clientWidth / container.clientHeight,
+        this.container.clientWidth / this.container.clientHeight,
         0.001,
-        500
+        1000
       );
-      this.camera.position.set(1,1,1)
-      this.scene = new Three.Scene();
-      this.scene.background = new Three.Color(0xdddddd);
 
+      this.camera.position.set(1, 1, 1);
+    },
+
+    addScene() {
+      this.scene = new Three.Scene();
+      this.scene.background = new Three.Color(0xb4b4b4);
+    },
+
+    addRenderer() {
+      this.renderer = new Three.WebGLRenderer({ antialias: true });
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+    },
+
+    addLights() {
       var ambientLight = new Three.AmbientLight(0x404040, 500);
       this.scene.add(ambientLight);
 
@@ -47,89 +76,169 @@ export default {
       directionalLight.position.set(0, 1, 0);
       directionalLight.castShadow = true;
       this.scene.add(directionalLight);
+      const skyColor = 0xb1e1ff; // light blue
+      const groundColor = 0xb97a20; // brownish orange
+      const intensity = 1;
+      const light = new Three.HemisphereLight(skyColor, groundColor, intensity);
+      this.scene.add(light);
+    },
 
-      this.renderer = new Three.WebGLRenderer({ antialias: true });
-      this.renderer.setSize(container.clientWidth, container.clientHeight);
-
-      this.controls = new OrbitControls(this.camera, container);
-      if(this.previewType == "mini"){
+    loadControls() {
+      this.controls = new OrbitControls(this.camera, this.container);
+      if (this.previewType == "mini") {
         this.controls.enabled = false;
         this.controls.autoRotate = true;
         this.controls.autoRotateSpeed = 15;
       }
-      var loader = new GLTFLoader();
-      loader.load(
-        "carModel/scene.gltf",
+    },
+
+    async loadGLTF(file) {
+      let { GLTFLoader } = await import(
+        "three/examples/jsm/loaders/GLTFLoader"
+      );
+      let gltfLoader = new GLTFLoader();
+      gltfLoader.load(
+        file,
         (model) => {
-          model.scene.children[0].rotateZ((45 / 180) * Math.PI);
-          this.scene.add(model.scene);
-          container.appendChild(this.renderer.domElement);
-          this.loading = false;
-          this.fitCameraToObject(model.scene,null)
-          this.animate();
+          this.addObjecToScene(model.scene);
         },
         () => {
           this.loading = true;
-        },(err)=>{
-          this.loading = false
-          console.log(err)
-          this.error = true
+        },
+        (err) => {
+          this.loading = false;
+          console.log(err);
+          this.error = true;
         }
       );
     },
+
+    async loadFBX(file) {
+      let { FBXLoader } = await import("three/examples/jsm/loaders/FBXLoader");
+      let fbxLoader = new FBXLoader();
+      fbxLoader.load(
+        file,
+        (model) => {
+          this.addObjecToScene(model);
+        },
+        () => {
+          this.loading = true;
+        },
+        (err) => {
+          this.loading = false;
+          console.log(err);
+          this.error = true;
+        }
+      );
+    },
+
+    async loadOBJ(file) {
+      let { OBJLoader2 } = await import(
+        "three/examples/jsm/loaders/OBJLoader2"
+      );
+      let { MTLLoader } = await import("three/examples/jsm/loaders/MTLLoader");
+      let { MtlObjBridge } = await import(
+        "three/examples/jsm/loaders/obj2/bridge/MtlObjBridge"
+      );
+      let materialLoader = new MTLLoader();
+      materialLoader.load(
+        "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl",
+        (mats) => {
+          mats.preload();
+          let objLoader = new OBJLoader2();
+          let materials = MtlObjBridge.addMaterialsFromMtlLoader(mats);
+          objLoader.addMaterials(materials);
+          objLoader.load(
+            file,
+            (model) => {
+              this.addObjecToScene(model);
+            },
+            () => {
+              this.loading = true;
+            },
+            (err) => {
+              this.loading = false;
+              console.log(err);
+              this.error = true;
+            },
+            (mesh) => {
+              console.log(mesh);
+            }
+          );
+        },
+        () => {
+          this.loading = true;
+        },
+        (err) => {
+          this.loading = false;
+          console.log(err);
+          this.error = true;
+        }
+      );
+    },
+
+    addObjecToScene(object) {
+      this.scene.add(object);
+      this.container.appendChild(this.renderer.domElement);
+      this.loading = false;
+      this.fitCameraToObject(object);
+      this.animate();
+    },
+
     animate() {
       this.renderer.render(this.scene, this.camera);
-      if(this.previewType == "mini")
-        this.controls.update()
+      if (this.previewType == "mini") this.controls.update();
       requestAnimationFrame(this.animate);
     },
 
-    fitCameraToObject(object, offset) {
-      offset = offset || 1.5;
+    fitCameraToObject(object) {
+      const box = new Three.Box3().setFromObject(object);
 
-      const boundingBox = new Three.Box3();
+      const boxSize = box.getSize(new Three.Vector3()).length();
+      const boxCenter = box.getCenter(new Three.Vector3());
 
-      boundingBox.setFromObject(object);
+      this.controls.maxDistance = boxSize * 10;
+      this.controls.target.copy(boxCenter);
+      this.controls.update();
+      const halfSizeToFitOnScreen = boxSize * 1.2 * 0.5;
+      const halfFovY = Three.MathUtils.degToRad(this.camera.fov * 0.5);
+      const distance = halfSizeToFitOnScreen / Math.tan(halfFovY);
+      const direction = new Three.Vector3()
+        .subVectors(this.camera.position, boxCenter)
+        .multiply(new Three.Vector3(1, 0, 1))
+        .normalize();
 
-      const center = boundingBox.getCenter(new Three.Vector3());
-      const size = boundingBox.getSize(new Three.Vector3());
-      const scaleFactor = new Three.Vector3(1/size.y,1/size.y,1/size.y)
-      object.scale.set(scaleFactor.x,scaleFactor.y,scaleFactor.z)
-      const startDistance = center.distanceTo(this.camera.position);
-      const endDistance =
-        this.camera.aspect > 1
-          ? (size.y / 2 + offset) / Math.abs(Math.tan(this.camera.fov / 2))
-          : (size.y / 2 + offset) /
-            Math.abs(Math.tan(this.camera.fov / 2)) /
-            this.camera.aspect;
-      this.camera.position.set(
-        (this.camera.position.x * endDistance) / startDistance,
-        (this.camera.position.y * endDistance) / startDistance,
-        (this.camera.position.z * endDistance) / startDistance
+      this.camera.position.copy(
+        direction.multiplyScalar(distance).add(boxCenter)
       );
-      this.camera.lookAt(center)
-      if(this.previewType == "large")
-        this.controls.update()
-    },
 
+      this.camera.near = boxSize / 100;
+      this.camera.far = boxSize * 100;
+
+      this.camera.updateProjectionMatrix();
+
+      this.camera.lookAt(boxCenter.x, boxCenter.y, boxCenter.z);
+    },
   },
+
   mounted() {
     this.init();
   },
 };
 </script>
 
+
 <style scoped>
-#container {
-  background-color: #dddddd;
-}
-.large{
+
+.large {
   height: 70vh;
+  background-color: #b4b4b4;
 }
-.mini{
+.mini {
   height: 100%;
+  background-color: #b4b4b4;
 }
-.err{
+.err {
   height: 100%;
   background-color: transparent;
   color: #3f3f3f;

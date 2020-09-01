@@ -1,7 +1,7 @@
 <template>
   <v-card dark link to="/assets/qsd">
-    <div @mouseleave="stopPreview" class="preview">
-      <v-img src="../../assets/exp.jpg" @mouseover="preparePreview" height="160" v-if="!previewing"></v-img>
+    <div @mouseleave="stopPreview" class="preview mb-0">
+      <v-img src="../../assets/exp.jpg" @mouseover="preparePreview" height="200" v-if="!previewing"></v-img>
       <Preview v-else :previewType="previewType"/>
       <v-progress-linear
       color="#46acc2"
@@ -9,6 +9,7 @@
       v-if="loading"
     ></v-progress-linear>
     </div>
+    <v-list>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline d-flex justify-space-between">
@@ -17,6 +18,8 @@
         </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
+
+    </v-list>
     <v-card-actions>
       <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
       <div class="grey--text ml-4">4.5 (413)</div>
@@ -41,8 +44,10 @@ export default {
 
   methods: {
     preparePreview() {
-      this.timeout = setTimeout(this.startPreview,1000)
-      this.loading = true
+      if(this.asset.preview){
+        this.timeout = setTimeout(this.startPreview,1000)
+        this.loading = true
+      }
     },
     startPreview(){
       this.previewing = true
@@ -58,13 +63,13 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
 .price {
   color: #46acc2;
 }
 
 .preview {
-  height: 160px;
+  height: 200px;
 }
 
 
