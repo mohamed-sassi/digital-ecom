@@ -148,6 +148,16 @@
                  </v-col>
              <v-col cols="12" md="2"></v-col>
              </v-row>
+             <v-divider></v-divider>
+            <v-row>
+                 <v-col cols="12" md="2"></v-col>
+                 <v-col cols="12" md="8">
+                   <Checkout/>
+                 </v-col>
+             <v-col cols="12" md="2"></v-col>
+             </v-row>
+             
+             
              </div>
               <v-divider></v-divider>
              
@@ -176,7 +186,7 @@
                         Shopping cart
                     </v-card-title>
                     <v-divider></v-divider>
-                    
+                     
 
                 </v-card>
             </v-col>
@@ -214,8 +224,12 @@
     </div>
 </template>
 
-<script>
+<script >
+import Checkout from "@/components/Checkout/Checkout";
   export default {
+    components:{
+      Checkout,
+    }, 
     data () {
       return {
         e1: 1,

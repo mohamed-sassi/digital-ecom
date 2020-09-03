@@ -197,7 +197,7 @@ form {
 
     &:focus {
       outline: none;
-      background-color: #fff;
+      background-color:#272727;
     }
   }
 }
