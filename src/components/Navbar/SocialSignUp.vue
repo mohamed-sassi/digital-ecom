@@ -17,15 +17,15 @@
 
 export default {
     methods: {
-    authenticate: function (provider) {
-      this.$auth.authenticate(provider).then(function () {
-        
+    authenticate(provider){
+      this.$auth.authenticate(provider).then(()=>{
+                
       })
     }
   }
 }
 </script>
-<style scoped link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style scoped>
  .fa {
   padding: 20px;
   
