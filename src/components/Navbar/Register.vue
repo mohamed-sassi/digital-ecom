@@ -25,22 +25,22 @@
               </div>
             </div>
           </div>
-          <form class="sign-up" action="#">
-            <h2>Create login</h2>
+          <form class="sign-up" @submit.prevent="register">
+            <h2>Create account</h2>
             <div>Use your email for registration</div>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="text" required placeholder="Name" v-model="username"/>
+            <input type="email" required placeholder="Email"  v-model="email"/>
+            <input type="password" required placeholder="Password" v-model="password"/>
             <button>Sign Up</button> 
           
           </form>
-          <form class="sign-in" action="#" >
+          <form class="sign-in" @submit.prevent="login">
             <h2>Sign In</h2>
             <div>Use your account</div>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="email" required placeholder="Email" v-model="email"/>
+            <input type="password" required placeholder="Password"  v-model="password"/>
             <a href="#" >Forgot your password?</a>
-            <button @click="this.$store.state.loggedIn=true ">Sign In</button>
+            <button>Sign In</button>
           </form>
         </div>
       </article>
@@ -56,10 +56,21 @@ export default {
     return {
       signUp: false,
       dialog: false,
+      username:"",
+      email:"",
+      password:""
     };
   },
   components:{
     SocialSignUp,
+  },
+  methods:{
+    login(){
+      this.$store.dispatch('login',{
+        email:this.email,
+        password:this.password
+      })
+    }
   }
 };
 </script>
@@ -185,6 +196,7 @@ form {
 
   input {
     background-color: #4d4f50;
+    color: white;
     border: none;
     padding: 8px 15px;
     margin: 6px 0;
