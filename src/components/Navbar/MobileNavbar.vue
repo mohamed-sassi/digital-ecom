@@ -10,7 +10,7 @@
             class="pt-1"
           />
         </router-link>
-        <div v-if="this.$store.state.loggedIn">
+        <div v-if="loggedIn">
           <Cart/>
           <v-menu offset-y="true" rounded="0" transition="slide-y-transition" dark>
             <template v-slot:activator="{ on, attrs }">
@@ -25,7 +25,6 @@
                 :key="i"
                 link
                 :to="link.route"
-                @click="link.onClick ? (loggedIn = false) : null"
               >
                 <v-list-item-icon>
                   <v-icon>{{link.icon}}</v-icon>
@@ -55,7 +54,7 @@
       placeholder="Search..."
     ></v-text-field>
       <Sidebar />
-      <div v-if="!this.$store.state.loggedIn" class="loginButtons">
+      <div v-if="!loggedIn" class="loginButtons">
         <v-btn color="orange" class="my-2" @click="loggedIn = true">Login</v-btn>
         <v-btn color="#46ACC2" class="my-2">Sign Up</v-btn>
       </div>
@@ -74,6 +73,7 @@ export default {
   },
   props: {
     accountLinks: Array,
+    loggedIn:Boolean
   },
   data: () => ({
     drawer: false,

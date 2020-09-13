@@ -1,6 +1,6 @@
 <template>
-  <DesktopNavbar v-if="!onMobile" :navLinks="navLinks" :accountLinks="accountLinks"/>
-  <MobileNavbar v-else :accountLinks="accountLinks"/>
+  <DesktopNavbar v-if="!onMobile" :navLinks="navLinks" :accountLinks="accountLinks" :loggedIn="loggedIn"/>
+  <MobileNavbar v-else :accountLinks="accountLinks" :loggedIn="loggedIn"/>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
       },
       {
         title: "Sign out",
-        route: "#",
+        route: "/#",
         icon: "mdi-logout",
         onClick:'logout'
       },
@@ -53,6 +53,9 @@ export default {
   computed:{
     onMobile(){
       return this.$store.getters.onMobile
+    },
+    loggedIn(){
+      return this.$store.getters.loggedIn 
     }
   }
 };

@@ -5,41 +5,58 @@
         <v-btn color="orange" class="mx-2" v-bind="attrs" v-on="on" @click="signUp = false">login</v-btn>
         <v-btn color="#46ACC2" class="mx-2" v-bind="attrs" v-on="on" @click="signUp = true">sign Up</v-btn>
       </template>
-      <article >
-        <div class="container" :class="{'sign-up-active' : signUp}" >
+      <article>
+        <div class="container" :class="{'sign-up-active' : signUp}">
+          <Loading v-if="loading" class="loading" />
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-left">
                 <h2>Welcome Back!</h2>
                 <p>Please login with your personal info</p>
-                <button class="invert" id="signIn" @click="signUp = !signUp"  >Sign In</button>
+                <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
                 <p>Or</p>
-                <SocialSignUp/>
+                <SocialSignUp />
               </div>
               <div class="overlay-right">
                 <h2>Hello, Friend!</h2>
                 <p>Please enter your personal details</p>
                 <button class="invert" id="signUp" @click="signUp = !signUp ">Sign Up</button>
                 <p>Or</p>
-                <SocialSignUp/>
+                <SocialSignUp />
               </div>
             </div>
           </div>
           <form class="sign-up" @submit.prevent="register">
             <h2>Create account</h2>
             <div>Use your email for registration</div>
-            <input type="text" required placeholder="Name" v-model="username"/>
-            <input type="email" required placeholder="Email"  v-model="email"/>
+            <input type="text" required placeholder="Name" v-model="name"/>
+            <input type="email" required placeholder="Email" v-model="email"/>
             <input type="password" required placeholder="Password" v-model="password"/>
-            <button>Sign Up</button> 
-          
+            <div v-if="registerErrors">
+              <div v-for="errorType in registerErrors" :key="errorType">
+                <v-alert type="error" v-for="error in errorType" dismissible :key="error">{{error}}</v-alert>
+              </div>
+            </div>
+            <v-alert type="success" v-if="success">Account created ... you may now login</v-alert>
+            <button>Sign Up</button>
           </form>
           <form class="sign-in" @submit.prevent="login">
             <h2>Sign In</h2>
             <div>Use your account</div>
-            <input type="email" required placeholder="Email" v-model="email"/>
-            <input type="password" required placeholder="Password"  v-model="password"/>
-            <a href="#" >Forgot your password?</a>
+            <input
+            required
+              type="email"
+              placeholder="Email"
+              v-model="email"
+            />
+            <input
+            required
+              type="password"
+              placeholder="Password"
+              v-model="password"
+            />
+            <a href="#">Forgot your password?</a>
+            <v-alert type="error" v-if="loginError">{{loginError}}</v-alert>
             <button>Sign In</button>
           </form>
         </div>
@@ -49,36 +66,71 @@
 </template>
 
 <script>
-import SocialSignUp from './SocialSignUp'
+import Loading from "./Loading";
+import SocialSignUp from "./SocialSignUp";
 export default {
-  
-  data: () => {
+  data() {
     return {
       signUp: false,
       dialog: false,
-      username:"",
-      email:"",
-      password:""
-    };
-  },
-  components:{
-    SocialSignUp,
-  },
-  methods:{
-    login(){
-      this.$store.dispatch('login',{
-        email:this.email,
-        password:this.password
-      })
+      name: "",
+      email: "",
+      password: "",
+      loading: false,
+      loginError: null,
+      registerErrors: [],
+      success: false,
     }
-  }
+  },
+  components: {
+    SocialSignUp,
+    Loading,
+  },
+  methods: {
+    login() {
+      this.loading = true;
+      this.$store
+        .dispatch("login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          this.loading = false;
+          if (res) this.loginError = res;
+        });
+    },
+    register() {
+      this.loading = true;
+      this.$store
+        .dispatch("register", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          this.loading = false;
+          if (res) this.registerErrors = res;
+          else {
+            this.success = true;
+            this.registerErrors = [];
+          }
+        });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.26);
+}
 .container {
   position: relative;
-  width: 768px;
+  width: auto;
   height: 480px;
   border-radius: 10px;
   overflow: hidden;
@@ -101,7 +153,7 @@ export default {
     left: -100%;
     height: 100%;
     width: 200%;
-    background: linear-gradient(to bottom right, rgb(0, 89, 255), #46ACC2);
+    background: linear-gradient(to bottom right, rgb(0, 89, 255), #46acc2);
     color: #fff;
     transform: translateX(0);
     transition: transform 0.5s ease-in-out;
@@ -142,7 +194,6 @@ p {
 }
 
 a {
-  
   color: #222;
   text-decoration: none;
   margin: 15px 0;
@@ -183,7 +234,7 @@ form {
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 90px 60px;
+  padding: 20px 20px;
   width: calc(50% - 120px);
   height: calc(100% - 180px);
   text-align: center;
@@ -209,7 +260,7 @@ form {
 
     &:focus {
       outline: none;
-      background-color:#272727;
+      background-color: #272727;
     }
   }
 }
