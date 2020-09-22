@@ -34,7 +34,7 @@
           <v-list-item
             v-for="(link, i) in accountLinks"
             :key="i"
-            :link ="link.route"
+            :link ="link.route != null"
             :to="link.route"
             @click="logout(link.onClick)"
           >

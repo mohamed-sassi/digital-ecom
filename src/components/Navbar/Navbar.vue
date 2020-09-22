@@ -44,11 +44,17 @@ export default {
       },
       {
         title: "Sign out",
-        route: "/#",
+        route: null,
         icon: "mdi-logout",
         onClick:'logout'
       },
-    ]
+    ],
+    adminLink:{
+      title:"Upload product",
+      route : "/upload",
+      icon: "mdi-upload",
+      onClick:null
+    }
   }),
   computed:{
     onMobile(){
@@ -56,6 +62,14 @@ export default {
     },
     loggedIn(){
       return this.$store.getters.loggedIn 
+    },
+    isAdmin(){
+      return this.$store.getters.isAdmin
+    },
+  },
+  mounted(){
+    if(this.isAdmin){
+      this.accountLinks.unshift(this.adminLink)
     }
   }
 };
