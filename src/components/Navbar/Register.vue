@@ -1,4 +1,4 @@
-<template>
+ <template>
   <v-row justify="center">
     <v-dialog v-model="dialog" width="57%">
       <template v-slot:activator="{ on, attrs }">
