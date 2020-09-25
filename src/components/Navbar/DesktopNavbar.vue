@@ -18,7 +18,7 @@
     ></v-text-field>
     <v-spacer></v-spacer>
     <Cart />
-    <div v-if="!this.$store.state.loggedIn " class="d-flex">
+    <div v-if="!loggedIn" class="d-flex">
       <Register/>
     </div>
     <div v-else>
@@ -34,9 +34,9 @@
           <v-list-item
             v-for="(link, i) in accountLinks"
             :key="i"
-            link
+            :link ="link.route != null"
             :to="link.route"
-            @click="link.onClick ? (this.$store.state.loggedIn = false) : null"
+            @click="logout(link.onClick)"
           >
             <v-list-item-icon>
               <v-icon>{{link.icon}}</v-icon>
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
 import NavLink from "./NavLink";
 import Cart from './Cart';
 import Register from './Register';
@@ -57,12 +58,24 @@ export default {
   components: {
     NavLink,
     Cart,
-    Register
+    Register,
   },
   props: {
     navLinks: Array,
-    accountLinks: Array
+    accountLinks: Array,
+    loggedIn:Boolean
   },
+  data:()=>({
+    message:false
+  }),
+  methods:{
+    logout(action){
+      if(action == "logout")
+        this.$store.dispatch('logout').then(res => {
+          console.log(res)
+        })
+    }
+  }
 };
 </script>
 

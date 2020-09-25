@@ -1,6 +1,6 @@
 <template>
-  <DesktopNavbar v-if="!onMobile" :navLinks="navLinks" :accountLinks="accountLinks"/>
-  <MobileNavbar v-else :accountLinks="accountLinks"/>
+  <DesktopNavbar v-if="!onMobile" :navLinks="navLinks" :accountLinks="accountLinks" :loggedIn="loggedIn"/>
+  <MobileNavbar v-else :accountLinks="accountLinks" :loggedIn="loggedIn"/>
 </template>
 
 <script>
@@ -44,15 +44,32 @@ export default {
       },
       {
         title: "Sign out",
-        route: "#",
+        route: null,
         icon: "mdi-logout",
         onClick:'logout'
       },
-    ]
+    ],
+    adminLink:{
+      title:"Upload product",
+      route : "/upload",
+      icon: "mdi-upload",
+      onClick:null
+    }
   }),
   computed:{
     onMobile(){
       return this.$store.getters.onMobile
+    },
+    loggedIn(){
+      return this.$store.getters.loggedIn 
+    },
+    isAdmin(){
+      return this.$store.getters.isAdmin
+    },
+  },
+  mounted(){
+    if(this.isAdmin){
+      this.accountLinks.unshift(this.adminLink)
     }
   }
 };

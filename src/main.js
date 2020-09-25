@@ -12,7 +12,6 @@ import axios from 'axios'
 Vue.use(VueAxios, axios)
 Vue.use(VueAuthenticate, {
   baseUrl: 'http://localhost:3000', // Your API domain
-  
   providers: {
     github: {
       clientId: '',
@@ -23,10 +22,12 @@ Vue.use(VueAuthenticate, {
   
 
 Vue.config.productionTip = false
+store.dispatch('getUser',store.state.token).then(()=>{
+  new Vue({
+    router,
+    store,
+    vuetify,
+    render: h => h(App)
+  }).$mount('#app')
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+})

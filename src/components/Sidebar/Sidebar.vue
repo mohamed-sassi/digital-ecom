@@ -1,5 +1,5 @@
 <template>
-  <v-card dark max-width="500" class="mx-auto sidebar" height="470px">
+  <v-card dark max-width="500" class="mx-auto sidebar" >
     <v-toolbar dark class="pl-5" rounded="0">
       <v-toolbar-title>Catregories</v-toolbar-title>
     </v-toolbar>

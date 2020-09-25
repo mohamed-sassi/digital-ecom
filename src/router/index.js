@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage'
 import AssetPage from '../views/AssetPage'
 import CheckoutPage from '../views/CheckoutPage'
+import UploadPage from '../views/UploadPage'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,10 @@ Vue.use(VueRouter)
     path: '/checkout',
     name: 'checkout',
     component: CheckoutPage
+  },
+  {
+    path:'/upload',
+    component:UploadPage
   }
 
 ]

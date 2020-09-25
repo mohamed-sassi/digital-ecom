@@ -20,8 +20,10 @@ export default {
   components: {
     Navbar,
     Footer,
-    
   },
+  beforeCreate(){
+    this.$store.dispatch('getUser',this.$store.state.token)
+  }
 };
 </script>
 
