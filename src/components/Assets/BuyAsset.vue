@@ -23,7 +23,7 @@
       </v-col>
       <v-col cols="12" sm="6" class="px-0 ml-xl-n3">
         <v-btn block>
-          <v-icon dark>mdi-cart-outline</v-icon>
+          <v-icon dark @click="addToCart(item)">mdi-cart-outline</v-icon>
           Add To Cart
         </v-btn>        
       </v-col>
@@ -48,6 +48,12 @@
 
 <script>
 export default {};
+/*methods: {
+    addToCart(item) 
+    {
+       this.$store.commit('addToCart', item);
+    }
+}*/
 </script>
 
 <style>

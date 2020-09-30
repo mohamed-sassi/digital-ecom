@@ -2,7 +2,7 @@
   <v-menu offset-y :close-on-content-click="false">
     <template v-slot:activator="{ on, attrs }" >
       <v-btn icon class="mx-1" v-bind="attrs" v-on="on">
-        <v-badge :content="cart.length.toString()" color="#46ACC2" overlap>
+        <v-badge :content="$store.state.cartCount " color="#46ACC2" overlap>
           <v-icon>mdi-basket-outline</v-icon>
         </v-badge>
       </v-btn>

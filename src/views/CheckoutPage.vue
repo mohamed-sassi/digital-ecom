@@ -185,7 +185,9 @@
                     <v-card-title>
                         Shopping cart
                     </v-card-title>
-                    <v-divider></v-divider>
+                    <v-divider>
+                      
+                    </v-divider>
                      
 
                 </v-card>

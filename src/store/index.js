@@ -10,6 +10,8 @@ export default new Vuex.Store({
   state: {
     token: JSON.parse(localStorage.getItem('token')) || null,
     user:  null,
+    cart: [],
+    cartCount: 0,
   },
 
   getters:{
@@ -33,7 +35,12 @@ export default new Vuex.Store({
     SET_USER(state,user){
       state.user = user
       localStorage.setItem('userId', user ? JSON.stringify(user.id) : null)
-    }
+    },
+    addToCart(state, item) {
+      state.cart.push(item);
+
+      state.cartCount++;
+  },
   },
   actions: {
     async login({dispatch},credentials){
