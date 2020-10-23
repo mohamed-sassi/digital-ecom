@@ -6,11 +6,11 @@
     <v-col :cols="onMobile ? '12' : '9'">
       <Slider />
       <v-divider color="grey"></v-divider>
-      <div class="pt-5 px-5" v-for="(category,index) in categories" :key="index">
-        <h1>{{category.type}}</h1>
-        <Assets :assets="category.assets" />
+      <!-- <div class="pt-5 px-5" v-for="(category,index) in categories" :key="index">
+        <h1>{{category.type}}</h1> -->
+        <Assets :assets="assets" />
         <v-divider color="grey"></v-divider>
-      </div>
+      <!-- </div> -->
     </v-col>
   </v-row>
 </template>
@@ -81,11 +81,17 @@ export default {
         ],
       },
     ],
+    assets:[]
   }),
   computed:{
     onMobile(){
       return this.$store.getters.onMobile;
     }
+  },
+  mounted(){
+    this.$store.dispatch('getAssets').then(assets => {
+      this.assets = assets
+    })
   }
 };
 </script>

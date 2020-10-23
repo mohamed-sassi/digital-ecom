@@ -31,6 +31,20 @@
         </template>
 
         <v-list>
+          <div v-if="isAdmin">
+          <v-list-item
+            v-for="(link, i) in adminLinks"
+            :key="i"
+            :link ="link.route != null"
+            :to="link.route"
+          >
+            <v-list-item-icon>
+              <v-icon>{{link.icon}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{link.title}}</v-list-item-title>
+          </v-list-item>
+            
+          </div>
           <v-list-item
             v-for="(link, i) in accountLinks"
             :key="i"
@@ -63,10 +77,17 @@ export default {
   props: {
     navLinks: Array,
     accountLinks: Array,
-    loggedIn:Boolean
+    loggedIn:Boolean,
+    isAdmin:Boolean
   },
   data:()=>({
-    message:false
+    message:false,
+    adminLinks:[{
+      title:"Upload product",
+      route : "/upload",
+      icon: "mdi-upload",
+      onClick:null
+    }]
   }),
   methods:{
     logout(action){

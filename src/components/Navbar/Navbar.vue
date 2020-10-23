@@ -1,6 +1,7 @@
+
 <template>
-  <DesktopNavbar v-if="!onMobile" :navLinks="navLinks" :accountLinks="accountLinks" :loggedIn="loggedIn"/>
-  <MobileNavbar v-else :accountLinks="accountLinks" :loggedIn="loggedIn"/>
+  <DesktopNavbar v-if="!onMobile" :navLinks="navLinks" :accountLinks="accountLinks" :loggedIn="loggedIn" :isAdmin="isAdmin"/>
+  <MobileNavbar v-else :accountLinks="accountLinks" :loggedIn="loggedIn" :isAdmin="isAdmin"/>
 </template>
 
 <script>
@@ -61,17 +62,12 @@ export default {
       return this.$store.getters.onMobile
     },
     loggedIn(){
-      return this.$store.getters.loggedIn 
+      return this.$store.getters.loggedIn
     },
     isAdmin(){
       return this.$store.getters.isAdmin
     },
   },
-  mounted(){
-    if(this.isAdmin){
-      this.accountLinks.unshift(this.adminLink)
-    }
-  }
 };
 </script>
 

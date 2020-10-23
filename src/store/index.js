@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   
   state: {
-    token: JSON.parse(localStorage.getItem('token')) || null,
+    token: localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null,
     user:  null,
   },
 
@@ -72,15 +72,17 @@ export default new Vuex.Store({
     },
 
     async getUser({commit},token){
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      try{
-        let response = await axios.get('http://127.0.0.1:8000/api/auth/me')
-        commit('SET_USER',response.data)
-      }
-      catch(e){
-        axios.defaults.headers.common['Authorization'] = null
-        commit('SET_TOKEN',null)
-        commit('SET_USER',null)
+      if(token != null){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        try{
+          let response = await axios.get('http://127.0.0.1:8000/api/auth/me')
+          commit('SET_USER',response.data)
+        }
+        catch(e){
+          axios.defaults.headers.common['Authorization'] = null
+          commit('SET_TOKEN',null)
+          commit('SET_USER',null)
+        }
       }
     },
 
@@ -90,5 +92,25 @@ export default new Vuex.Store({
       commit('SET_TOKEN',null)
       commit('SET_USER',null)
     },
+    async getAssets(){
+      try{
+        let response = await axios.get('http://127.0.0.1:8000/api/products')
+        console.log(response.data);
+        return(response.data);
+      }
+      catch(err){
+        console.log(err);
+      }
+    },
+    async getAssetById(_,id){
+      try{
+        let response = await axios.get('http://127.0.0.1:8000/api/products/'+id)
+        return(response.data);
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
   },
+
 })

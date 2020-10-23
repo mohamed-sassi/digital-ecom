@@ -11,12 +11,14 @@
 import Loading from "./Loading";
 import * as Three from "three/build/three.module";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import * as JSZip from 'jszip'
 export default {
   components: {
     Loading,
   },
   props: {
     previewType: String,
+    file:String
   },
   data: () => ({
     error: null,
@@ -37,7 +39,7 @@ export default {
       this.loadControls();
       // this.loadFBX("the-lighthouse/source/Cotman_Sam.fbx")
       this.loadGLTF(
-        "carModel/scene.gltf"
+        "http://localhost/marketplace-backend/storage/app/public/products/"+this.file+'/scene.gltf'
       );
       // this.loadOBJ(
       //   "https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj"
@@ -93,6 +95,13 @@ export default {
     },
 
     async loadGLTF(file) {
+      // const file = await fetch(fileLink,{
+      //   credentials: 'same-origin'
+      // }).then(res => res.blob())      
+      // var zipLoader = new JSZip();
+      // let zip = await zipLoader.loadAsync(file)
+      // let fileToLoad = await zip.files["scene.gltf"].async("string");
+      // console.log(fileToLoad);
       let { GLTFLoader } = await import(
         "three/examples/jsm/loaders/GLTFLoader"
       );

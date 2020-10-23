@@ -1,8 +1,8 @@
 <template>
-  <v-card dark link to="/assets/qsd">
+  <v-card dark link :to="'/assets/'+asset.id">
     <div @mouseleave="stopPreview" class="preview mb-0">
-      <v-img src="../../assets/exp.jpg" @mouseover="preparePreview" height="200" v-if="!previewing"></v-img>
-      <Preview v-else :previewType="previewType"/>
+      <v-img :src="'http://localhost/marketplace-backend/storage/app/public/images/'+asset.thumbnail" @mouseover="preparePreview" height="200" v-if="!previewing"></v-img>
+      <Preview v-else :previewType="previewType" :file="asset.file_name"/>
       <v-progress-linear
       color="#46acc2"
       indeterminate
@@ -14,15 +14,15 @@
       <v-list-item-content>
         <v-list-item-title class="headline d-flex justify-space-between">
           {{asset.title}}
-          <span class="price">20$</span>
+          <span class="price">{{asset.price}}$</span>
         </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
     </v-list>
     <v-card-actions>
-      <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
-      <div class="grey--text ml-4">4.5 (413)</div>
+      <v-rating :value="0" color="amber" dense half-increments readonly size="14"></v-rating>
+      <div class="grey--text ml-4">0 (0)</div>
     </v-card-actions>
   </v-card>
 </template>
@@ -44,10 +44,8 @@ export default {
 
   methods: {
     preparePreview() {
-      if(this.asset.preview){
         this.timeout = setTimeout(this.startPreview,1000)
         this.loading = true
-      }
     },
     startPreview(){
       this.previewing = true

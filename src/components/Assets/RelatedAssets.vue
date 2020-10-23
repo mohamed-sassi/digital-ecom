@@ -13,22 +13,17 @@ export default {
     components:{
         AssetCard
     },
+    props:{
+      assetId:Number
+    },
   data: () => ({
-    assets: [
-      {
-        title: "asset 1",
-      },
-      {
-        title: "asset 2",
-      },
-      {
-        title: "asset 3",
-      },
-      {
-        title: "asset 4",
-      },
-    ],
+    assets: [],
   }),
+  mounted(){
+    this.$store.dispatch('getAssets').then(assets => {
+      this.assets = assets.filter(asset => asset.id != this.assetId)
+    })
+  }
 };
 </script>
 
