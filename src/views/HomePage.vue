@@ -6,11 +6,11 @@
     <v-col :cols="onMobile ? '12' : '9'">
       <Slider />
       <v-divider color="grey"></v-divider>
-      <!-- <div class="pt-5 px-5" v-for="(category,index) in categories" :key="index">
-        <h1>{{category.type}}</h1> -->
+      <div class="pt-5 px-5">
+        <h1>Latest assets</h1>
         <Assets :assets="assets" />
         <v-divider color="grey"></v-divider>
-      <!-- </div> -->
+      </div>
     </v-col>
   </v-row>
 </template>
@@ -26,61 +26,6 @@ export default {
     Sidebar
   },
   data: () => ({
-    categories: [
-      {
-        type: "Trending assets",
-        assets: [
-          {
-            title: "asset 1",
-            preview:true
-          },
-          {
-            title: "asset 2",
-          },
-          {
-            title: "asset 3",
-          },
-          {
-            title: "asset 4",
-            preview:true
-          },
-        ],
-      },
-      {
-        type: "Recent assets",
-        assets: [
-          {
-            title: "asset 5",
-          },
-          {
-            title: "asset 6",
-          },
-          {
-            title: "asset 7",
-          },
-          {
-            title: "asset 8",
-          },
-        ],
-      },
-      {
-        type: "Top Rated assets",
-        assets: [
-          {
-            title: "asset 1",
-          },
-          {
-            title: "asset 2",
-          },
-          {
-            title: "asset 3",
-          },
-          {
-            title: "asset 4",
-          },
-        ],
-      },
-    ],
     assets:[]
   }),
   computed:{
